@@ -65,6 +65,11 @@ public class Player {
 			//player attacks monster
 			monsterHealth -= this.pack.getEquippedWeapon().getStrength();
 			System.out.println(this.name + " has hit the " + monster.getName() + " for " + this.pack.getEquippedWeapon().getStrength() + " damage.");
+			try {
+			Thread.sleep(1000);
+			}catch (InterruptedException e) {
+			
+			}	
 			if(monsterHealth <= 0){
 				result = true;
 				System.out.println(monster.getName()+ " has been killed by "+ this.name + ".");
