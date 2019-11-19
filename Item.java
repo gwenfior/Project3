@@ -10,7 +10,7 @@ public class Item
 	private String name;
 	private int weight;
 	private int value;
-	private int strength;
+	protected int strength;
 
 	/**
 	 * Constructor for objects of class Item

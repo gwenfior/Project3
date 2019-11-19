@@ -1,9 +1,7 @@
 
 public class Book extends Item{
 
-	//usable book class that will generate books that the "use" method will override
-	
-	private ItemType type;
+	//usable book class that will generate books that the "use" method will override	
 	private String message;
 	
 	public Book(ItemType itemType, String name, int weight, int value, int strength, String message){

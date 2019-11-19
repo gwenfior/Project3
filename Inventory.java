@@ -52,7 +52,7 @@ public class Inventory{
 		if(totalWeight<=this.maxWeight){
 			canAdd = true;
 			this.items.add(item);
-			System.out.println("You added the" + item.getName() + " to your inventory.");
+			System.out.println("You added the " + item.getName() + " to your inventory.");
 		}//end of if
 		
 		return canAdd;
