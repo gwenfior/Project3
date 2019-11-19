@@ -2,19 +2,15 @@ import java.util.Random;
 //This class creates a monster object.
 //It holds the variables necessary for a monster to do battles.
 //@author Justin
-public class Monster {
+public class Monster extends Character{
 
-	private int strength;	
-	private int health;
-	private String name;
+	private int strength;
 	private int random1 = 12;
 	private int random2 = 12;
 	
 	/**This is the Constructor for a Monster**/
 	public Monster(String name, int health, int strength){
-
-		this.health = health;
-		this.name = name;
+		super(name, health);
 		this.strength = strength;
 
 	}
@@ -29,16 +25,6 @@ public class Monster {
 	//this returns the monsters strength
 	public int getStrength(){
 		return this.strength;
-	}
-	
-	//this returns the monsters health
-	public int getHealth(){
-		return this.health;
-	}
-
-	//this returns the monsters name
-	public String getName(){
-		return this.name;
 	}
 
 	//this moves the monsters randomly around the room
