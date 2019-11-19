@@ -92,6 +92,8 @@ public class Room{
 						Item item = monster.get(theNum).dropItem();
 						boolean pickedUp = player1.getInventory().add(item);
 						System.out.println("You also gained a gold diamond!");
+						monster.remove(theNum);
+						monster.add(MonsterGenerator.generate());
 
 					}//end winning
 					else{
@@ -135,7 +137,8 @@ public class Room{
 						Item item = monster.get(theNum).dropItem();
 						boolean pickedUp = player1.getInventory().add(item);
 						System.out.println("You also gained a gold diamond!");
-
+						monster.remove(theNum);
+						monster.add(MonsterGenerator.generate());
 
 					}//end winning
 					else{
@@ -180,7 +183,8 @@ public class Room{
 						Item item = monster.get(theNum).dropItem();
 						boolean pickedUp = player1.getInventory().add(item);
 						System.out.println("You also gained a gold diamond!");
-
+						monster.remove(theNum);
+						monster.add(MonsterGenerator.generate());
 
 					}//end winning
 					else{
@@ -226,6 +230,8 @@ public class Room{
 						Item item = monster.get(theNum).dropItem();
 						boolean pickedUp = player1.getInventory().add(item);
 						System.out.println("You also gained a gold diamond!");
+						monster.remove(theNum);
+						monster.add(MonsterGenerator.generate());
 
 					}//end winning
 					else{
@@ -239,71 +245,24 @@ public class Room{
 				System.out.println("You can't move there!");
 			}
 		}//end if going left
-
+		
+		invisibleMonster();
 		for(int t = 0; t < monster.size(); t++){
 			monster.get(t).moveMonster(square);
 		}
 	}//end move player
-	
-	//this moves the monsters randomly around the room
-	/*public void moveMonster(char[][] square){//moves the monster randomly around the map
-		Random rand = new Random();
-		
+
+	//this method makes the monsters disappear so they can then move
+	public void invisibleMonster(){
 		for(int x = 0; x < 10; x++){
 			for(int y = 0; y < 10; y++){
-				if(square[x][y] == monster[t]){
-					System.out.println("AAAA");
+				if(square[x][y] == '!'){
+					//System.out.println("AAAA");
 					square[x][y] = ' ';
 				}
 			}
 		}
-		if(random1 == 12 || random2 == 12){
-			for(int i = 0; i < 4; i++){//this is to make 3 monsters
-				random1 = rand.nextInt(8)+1;
-				random2 = rand.nextInt(8)+1;
-				if(square[random1][random2] == '_' || square[random1][random2] == '|'){
-					System.out.println("BBBBBB");
-					square[1][1] = monster[t];
-				}
-				else{
-					square[random1][random2] = monster[t];
-					System.out.println("CCCCCC");
-				}
-			}
-		}//end if
-		else{
-			if(square[random1+1][random2] != '_' && square[random1+1][random2] != '|'){
-					square[random1+1][random2] = monster[t];
-					random1 = random1+1;
-					System.out.println("MOVE");
-				}
-			else if(square[random1-1][random2] != '_' && square[random1-1][random2] != '|'){
-					square[random1-1][random2] = monster[t];
-					random1 = random1 - 1;
-					System.out.println("MOVE");
+	}//end removing monsters from board
 
-				}
-			else if(square[random1][random2+1] != '_' && square[random1][random2+1] != '|'){
-					square[random1][random2+1] = monster[t];
-					random2 = random2+1;
-					System.out.println("MOVE");
-
-				}
-			else if(square[random1][random2-1] != '_' && square[random1][random2-1] != '|'){
-					square[random1][random2-1] = monster[t];
-					random2 = random2-1;
-					System.out.println("MOVE");
-
-				}
-				else{
-					random1 = 12;
-					random2 = 12;
-					square[1][1] = monster[t];
-				}
-		}
-
-
-
-	}//end moveMonster()*/
 
 }//end class Room
