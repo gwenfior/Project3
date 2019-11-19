@@ -2,40 +2,26 @@
 //It contains the variables of the player for it to battle,
 //hold items, and wear armor.
 //@author Justin
-public class Player {
+public class Player extends Character {
 
 	private Inventory pack;
-	private String name;
-	private int health;
 	private int goldDiamonds;
 	
 	/**This is the player Constructor*/
 	public Player(String name, int health){
-
+		super(name, health);
 		pack = new Inventory(200);
 		Item initialWeapon = new Item(ItemType.WEAPON, "stick", 1, 0, 5);
 		pack.add(initialWeapon);
 		pack.setWeapon(initialWeapon);
 		pack.add(ItemGenerator.generate());
 		pack.add(ItemGenerator.generate());
-		this.name = name;
-		this.health = health;
 
 	}
 	
 	//this returns the inventory
 	public Inventory getInventory(){
 		return pack;
-	}
-	
-	//this returns the name
-	public String getName(){
-		return this.name;
-	}
-	
-	//this returns the health
-	public int getHealth(){
-		return this.health;
 	}
 	
 	//this returns the number of diamonds the player has found
@@ -45,7 +31,7 @@ public class Player {
 	
 	//this prints out the player's current stats
 	public void stats(){
-		System.out.println("Name: " + name + " | Health: " + health);
+		System.out.println("Name: " + this.name + " | Health: " + this.health);
 		if(pack.getEquippedArmor() != null){
 			System.out.println("Armor: " + pack.getEquippedArmor().getName() + " | Strength: " + pack.getEquippedArmor().getStrength());
 		}
@@ -58,7 +44,7 @@ public class Player {
 		boolean result = true;
 		int monsterHealth = monster.getHealth();
 		if(pack.getEquippedArmor() != null){
-			this.health = health + pack.getEquippedArmor().getStrength();
+			this.health = this.health + pack.getEquippedArmor().getStrength();
 		}
 		while(this.health >= 0 && monsterHealth >= 0){
 
@@ -90,8 +76,5 @@ public class Player {
 		return result;
 	}//end attack()
 
-public void setHealth(int health){
-this.health = health;
-}
 
 }//end player class
