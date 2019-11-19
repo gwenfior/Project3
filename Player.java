@@ -90,5 +90,8 @@ public class Player {
 		return result;
 	}//end attack()
 
+public void setHealth(int health){
+this.health = health;
+}
 
 }//end player class

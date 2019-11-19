@@ -74,8 +74,11 @@ public class ItemGenerator{
 		largeWeapon.add("Staff");
 
 		Item words = null;
-		if(rando<3){
-			words  = new Item(ItemType.OTHER,others.get(rando), rng.nextInt(10), rando, 0); 
+		if(rando<=1){
+			words  = new Potion(ItemType.OTHER,"Potion", rng.nextInt(10), rando, rng.nextInt(15)+5); 
+		}else if(rando<3){
+			words = new Item(ItemType.OTHER,others.get(rng.nextInt(9)),rng.nextInt(10), rando,0);
+		
 		}else if (rando>= 3 && rando<5){
 			words  = new Item(ItemType.ARMOR, materials.get(randMat) + " " + smallArmor.get(smallArm),rng.nextInt(6)+5,rng.nextInt(6)+5,rng.nextInt(15) + 1);  
 		}else if (rando>=5 && rando <7){

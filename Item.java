@@ -51,5 +51,9 @@ public class Item
 	public String toString(){
 		return ("This " + this.name + " has a value of " + this.value + ", a strength of " + this.strength + " ,and a weight of " + this.weight + ".");  
 	}
+	//use method for generic objects that can't be used by the player	
+	public void use(){
+	System.out.println("You can't use that item here");
+	}
 
 }
