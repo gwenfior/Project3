@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.Random;
+import java.util.ArrayList;
 /**This class creates a room to print too the screen.
  * It also allows the player to move around the room.
  * It also moves monsters around the room.
@@ -12,9 +13,10 @@ public class Room{
 	private char player;
 	private int currentX;
 	private int currentY;
-	private char monster;
+	private ArrayList<Monster> monster = new ArrayList<Monster>();
 	private Player player1;
-	private Monster monster1 = null;
+	//private int random1 = 12;
+	//private int random2 = 12;
 
 	/**this is the room constructor**/
 	public Room(Player player2){
@@ -31,7 +33,10 @@ public class Room{
 			{'_', '_', '_', '_', '_', '_', '_', '_', '_', '_'}
 		};
 		player = '@';
-		monster = '!';
+		monster.add(MonsterGenerator.generate());
+		monster.add(MonsterGenerator.generate());
+		monster.add(MonsterGenerator.generate());
+		monster.add(MonsterGenerator.generate());
 		currentX = 1;
 		currentY = 1;
 		player1 = player2;
@@ -54,10 +59,12 @@ public class Room{
 	//this moves the player and updates the board depending on that movement.
 	//If the spot is a monster, it initates a battle before updating.
 	public void movePlayer(int X, int Y){
+		Random random = new Random();
+		int theNum = random.nextInt(monster.size());
 		if(X == 1){
 			//this.moveMonster();
 			if(square[currentX-1][currentY] != '_'){//if it is not a wall
-				if(square[currentX-1][currentY] != monster){ //if it is not a monster
+				if(square[currentX-1][currentY] != '!'){ //if it is not a monster
 					System.out.println(" ");
 					square[currentX][currentY] = ' ';
 					square[currentX-1][currentY] = player;
@@ -69,9 +76,9 @@ public class Room{
 						System.out.println(" ");
 					}//end printing the map again
 				}
-				else if(square[currentX-1][currentY] == monster){//if it is a monster
-					monster1 = MonsterGenerator.generate();//generates a monster for the battle
-					boolean win = player1.attack(monster1);//fight happens here
+				else if(square[currentX-1][currentY] == '!'){//if it is a monster
+					//monster1 = MonsterGenerator.generate();//gene
+					boolean win = player1.attack(monster.get(theNum));//fight happens here
 					if(win == true){//if they win, they step on the monster
 						square[currentX][currentY] = ' ';
 						square[currentX-1][currentY] = player;
@@ -82,7 +89,7 @@ public class Room{
 							}
 							System.out.println(" ");
 						}//end printing the map again
-						Item item = monster1.dropItem();
+						Item item = monster.get(theNum).dropItem();
 						boolean pickedUp = player1.getInventory().add(item);
 						System.out.println("You also gained a gold diamond!");
 
@@ -101,7 +108,7 @@ public class Room{
 		if(X == -1){
 			//this.moveMonster();
 			if(square[currentX+1][currentY] != '_'){//if it is not a wall
-				if(square[currentX+1][currentY] != monster){ //if it is not a monster
+				if(square[currentX+1][currentY] != '!'){ //if it is not a monster
 					System.out.println(" ");
 					square[currentX][currentY] = ' ';
 					square[currentX+1][currentY] = player;
@@ -113,10 +120,8 @@ public class Room{
 						System.out.println(" ");
 					}//end printing the map again
 				}
-				else if(square[currentX+1][currentY] == monster){//if it is a monster
-					monster1 = MonsterGenerator.generate();//generates a monster for the battle
-					
-					boolean win = player1.attack(monster1);//fight happens here
+				else if(square[currentX+1][currentY] == '!'){//if it is a monster
+					boolean win = player1.attack(monster.get(theNum));//fight happens here
 					if(win == true){//if they win, they step on the monster
 						square[currentX][currentY] = ' ';
 						square[currentX+1][currentY] = player;
@@ -127,7 +132,7 @@ public class Room{
 							}
 							System.out.println(" ");
 						}//end printing the map again
-						Item item = monster1.dropItem();
+						Item item = monster.get(theNum).dropItem();
 						boolean pickedUp = player1.getInventory().add(item);
 						System.out.println("You also gained a gold diamond!");
 
@@ -148,7 +153,7 @@ public class Room{
 		if(Y == 1){
 			//this.moveMonster();
 			if(square[currentX][currentY-1] != '|'){//if it is not a wall
-				if(square[currentX][currentY-1] != monster){ //if it is not a monster
+				if(square[currentX][currentY-1] != '!'){ //if it is not a monster
 					System.out.println(" ");
 					square[currentX][currentY] = ' ';
 					square[currentX][currentY-1] = player;
@@ -160,9 +165,8 @@ public class Room{
 						System.out.println(" ");
 					}//end printing the map again
 				}
-				else if(square[currentX][currentY-1] == monster){//if it is a monster
-					monster1 = MonsterGenerator.generate();//generates a monster for the battle
-					boolean win = player1.attack(monster1);//fight happens here
+				else if(square[currentX][currentY-1] == '!'){//if it is a monster
+					boolean win = player1.attack(monster.get(theNum));//fight happens here
 					if(win == true){//if they win, they step on the monster
 						square[currentX][currentY] = ' ';
 						square[currentX][currentY-1] = player;
@@ -173,7 +177,7 @@ public class Room{
 							}
 							System.out.println(" ");
 						}//end printing the map again
-						Item item = monster1.dropItem();
+						Item item = monster.get(theNum).dropItem();
 						boolean pickedUp = player1.getInventory().add(item);
 						System.out.println("You also gained a gold diamond!");
 
@@ -195,7 +199,7 @@ public class Room{
 		if(Y == -1){
 			//this.moveMonster();
 			if(square[currentX][currentY+1] != '|'){//if it is not a wall
-				if(square[currentX][currentY+1] != monster){ //if it is not a monster
+				if(square[currentX][currentY+1] != '!'){ //if it is not a monster
 					System.out.println(" ");
 					square[currentX][currentY] = ' ';
 					square[currentX][currentY+1] = player;
@@ -207,9 +211,8 @@ public class Room{
 						System.out.println(" ");
 					}//end printing the map again
 				}
-				else if(square[currentX][currentY+1] == monster){//if it is a monster
-					monster1 = MonsterGenerator.generate();//generates a monster for the battle
-					boolean win = player1.attack(monster1);//fight happens here
+				else if(square[currentX][currentY+1] == '!'){//if it is a monster
+					boolean win = player1.attack(monster.get(theNum));//fight happens here
 					if(win == true){//if they win, they step on the monster
 						square[currentX][currentY] = ' ';
 						square[currentX][currentY+1] = player;
@@ -220,7 +223,7 @@ public class Room{
 							}
 							System.out.println(" ");
 						}//end printing the map again
-						Item item = monster1.dropItem();
+						Item item = monster.get(theNum).dropItem();
 						boolean pickedUp = player1.getInventory().add(item);
 						System.out.println("You also gained a gold diamond!");
 
@@ -237,32 +240,70 @@ public class Room{
 			}
 		}//end if going left
 
-		this.moveMonster();
+		for(int t = 0; t < monster.size(); t++){
+			monster.get(t).moveMonster(square);
+		}
 	}//end move player
 	
 	//this moves the monsters randomly around the room
-	public void moveMonster(){//moves the monster randomly around the map
+	/*public void moveMonster(char[][] square){//moves the monster randomly around the map
 		Random rand = new Random();
-
+		
 		for(int x = 0; x < 10; x++){
 			for(int y = 0; y < 10; y++){
-				if(square[x][y] == monster){
+				if(square[x][y] == monster[t]){
+					System.out.println("AAAA");
 					square[x][y] = ' ';
 				}
 			}
 		}
-		
-		for(int i = 0; i < 4; i++){//this is to make 3 monsters
-			int random1 = rand.nextInt(8)+1;
-			int random2 = rand.nextInt(8)+1;
-			if(square[random1][random2] == '_' || square[random1][random2] == '|'){
-				square[1][1] = monster;
+		if(random1 == 12 || random2 == 12){
+			for(int i = 0; i < 4; i++){//this is to make 3 monsters
+				random1 = rand.nextInt(8)+1;
+				random2 = rand.nextInt(8)+1;
+				if(square[random1][random2] == '_' || square[random1][random2] == '|'){
+					System.out.println("BBBBBB");
+					square[1][1] = monster[t];
+				}
+				else{
+					square[random1][random2] = monster[t];
+					System.out.println("CCCCCC");
+				}
 			}
-			else{
-				square[random1][random2] = monster;
-			}
-		}//end for
+		}//end if
+		else{
+			if(square[random1+1][random2] != '_' && square[random1+1][random2] != '|'){
+					square[random1+1][random2] = monster[t];
+					random1 = random1+1;
+					System.out.println("MOVE");
+				}
+			else if(square[random1-1][random2] != '_' && square[random1-1][random2] != '|'){
+					square[random1-1][random2] = monster[t];
+					random1 = random1 - 1;
+					System.out.println("MOVE");
 
-	}//end moveMonster()
+				}
+			else if(square[random1][random2+1] != '_' && square[random1][random2+1] != '|'){
+					square[random1][random2+1] = monster[t];
+					random2 = random2+1;
+					System.out.println("MOVE");
+
+				}
+			else if(square[random1][random2-1] != '_' && square[random1][random2-1] != '|'){
+					square[random1][random2-1] = monster[t];
+					random2 = random2-1;
+					System.out.println("MOVE");
+
+				}
+				else{
+					random1 = 12;
+					random2 = 12;
+					square[1][1] = monster[t];
+				}
+		}
+
+
+
+	}//end moveMonster()*/
 
 }//end class Room
