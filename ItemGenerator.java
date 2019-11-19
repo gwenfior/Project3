@@ -11,7 +11,7 @@ public class ItemGenerator{
 
 		//random number generator
 		Random rng = new Random();
-		 int rando = rng.nextInt(10);
+		 int rando = rng.nextInt(11);
 		 int randMat = rng.nextInt(6);
 		 int  smallArm = rng.nextInt(5);
 		 int largeArm = rng.nextInt(4);
@@ -22,14 +22,22 @@ public class ItemGenerator{
 		//create an arrayList of miscellaneous objects
 		ArrayList<String> others = new ArrayList<String>();
 		others.add("Keys");
-		others.add("Potions");
-		others.add("Book");
 		others.add("Scroll");
 		others.add("Map");
 		others.add("Bucket");
 		others.add("Food");
 		others.add("Tusk");
 		others.add("Vase");
+		
+		//create an arrayList of book messages
+		ArrayList<String> messages = new ArrayList<String>();
+		messages.add("Remember, to win the game, you must collect 10 gold diamonds that you get by killing monsters.");
+		messages.add("When you get a new item, check to see if you can use it.");
+		messages.add("Always remember to check your equipped weapon and armor to make sure the best possible armor or weapon is equipped.");
+	      	messages.add("Make sure to save and quit before you leave the game so your progress doesn't get lost");
+		messages.add("Some enemies are more common than others, so do your best to avoid powerful ones like dragons or serpents");
+		messages.add("Drop items that you can't use to make room for other items that can help you.");	
+		messages.add("When you get to the end of the game, you can keep playing to get the best weapons and armor.");
 
 		//create an arrayList of Materials
 		ArrayList<String> materials = new ArrayList<String>();
@@ -64,6 +72,7 @@ public class ItemGenerator{
 		smallWeapon.add("Fork");
 		smallWeapon.add("Ball and Chain");
 		smallWeapon.add("Pan");
+		
 		//heavyWeight weapons
 		ArrayList<String> largeWeapon = new ArrayList<String>();
 		largeWeapon.add("Sword");
@@ -76,14 +85,18 @@ public class ItemGenerator{
 		Item words = null;
 		if(rando<=1){
 			words  = new Potion(ItemType.OTHER,"Potion", rng.nextInt(10), rando, rng.nextInt(15)+5); 
-		}else if(rando<3){
-			words = new Item(ItemType.OTHER,others.get(rng.nextInt(9)),rng.nextInt(10), rando,0);
+		}else if(rando<=2){
+
+			words = new Book(ItemType.OTHER,"Book",rng.nextInt(10), rando,0, messages.get(rng.nextInt(7)));
+		}else if(rando<=3){
+
+			words = new Item(ItemType.OTHER,others.get(rng.nextInt(7)), rando, rng.nextInt(5), 0);
 		
-		}else if (rando>= 3 && rando<5){
+		}else if (rando>= 4 && rando<6){
 			words  = new Item(ItemType.ARMOR, materials.get(randMat) + " " + smallArmor.get(smallArm),rng.nextInt(6)+5,rng.nextInt(6)+5,rng.nextInt(15) + 1);  
-		}else if (rando>=5 && rando <7){
+		}else if (rando>=6 && rando <8){
 			words  = new Item(ItemType.ARMOR, materials.get(randMat) + " " + largeArmor.get(largeArm), rng.nextInt(30) +20, rng.nextInt(10) +10, rng.nextInt(35) +10);
-		}else if (rando>=7 && rando <9){
+		}else if (rando>=8 && rando <10){
 			words = new Item(ItemType.WEAPON, materials.get(randMat) + " " + smallWeapon.get(smallWeap), rng.nextInt(20) + 10, rng.nextInt(30) + 20, rng.nextInt(25)+5); 
 		}else {
 			words = new Item(ItemType.WEAPON, materials.get(randMat) + " " + largeWeapon.get(largeWeap), rng.nextInt(50) +20, rng.nextInt(60) + 20, rng.nextInt(45) + 15);
