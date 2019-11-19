@@ -64,7 +64,7 @@ public class Room{
 		int theNum = random.nextInt(monster.size());
 		if(X == 1){
 			//this.moveMonster();
-			if(square[currentX-1][currentY] != '_'){//if it is not a wall
+			if(square[currentX-1][currentY] != '_' && square[currentX-1][currentY] != '|'){//if it is not a wall
 				if(square[currentX-1][currentY] != '!'){ //if it is not a monster
 					System.out.println(" ");
 					square[currentX][currentY] = ' ';
@@ -110,7 +110,7 @@ public class Room{
 		}//end if going up
 		if(X == -1){
 			//this.moveMonster();
-			if(square[currentX+1][currentY] != '_'){//if it is not a wall
+			if(square[currentX+1][currentY] != '_' && square[currentX+1][currentY] != '|'){//if it is not a wall
 				if(square[currentX+1][currentY] != '!'){ //if it is not a monster
 					System.out.println(" ");
 					square[currentX][currentY] = ' ';
@@ -155,8 +155,8 @@ public class Room{
 		}//end if going down
 
 		if(Y == 1){
-			//this.moveMonster();
-			if(square[currentX][currentY-1] != '|'){//if it is not a wall
+			//this.moveMonster();	
+			if(square[currentX][currentY-1] != '_' && square[currentX][currentY-1] != '|'){//if it is not a wall
 				if(square[currentX][currentY-1] != '!'){ //if it is not a monster
 					System.out.println(" ");
 					square[currentX][currentY] = ' ';
@@ -202,8 +202,8 @@ public class Room{
 
 		
 		if(Y == -1){
-			//this.moveMonster();
-			if(square[currentX][currentY+1] != '|'){//if it is not a wall
+			//this.moveMonster();	
+			if(square[currentX][currentY+1] != '_' && square[currentX][currentY+1] != '|'){//if it is not a wall
 				if(square[currentX][currentY+1] != '!'){ //if it is not a monster
 					System.out.println(" ");
 					square[currentX][currentY] = ' ';
@@ -252,6 +252,7 @@ public class Room{
 			monster.get(t).moveMonster(square);
 		}
 	}//end move player
+
 
 	//this method makes the monsters disappear so they can then move
 	public void invisibleMonster(){
