@@ -20,7 +20,8 @@ public class Room{
 
 	/**this is the room constructor**/
 	public Room(Player player2){
-		square = new char[][]{
+		square = World.getRoom(1); 
+			/*new char[][]{
 			{'_', '_', '_', '_', '_', '_', '_', '_', '_', '_'},
 			{'|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|'},
 			{'|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|'},
@@ -31,7 +32,7 @@ public class Room{
 			{'|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|'},
 			{'|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|'},
 			{'_', '_', '_', '_', '_', '_', '_', '_', '_', '_'}
-		};
+		};*/
 		player = '@';
 		monster.add(MonsterGenerator.generate());
 		monster.add(MonsterGenerator.generate());

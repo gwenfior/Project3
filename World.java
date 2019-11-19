@@ -2,9 +2,9 @@ import java.util.ArrayList;
 
 public class World {
 
-	private char[][] room1;
-	private char[][] room2;
-	private char[][] room3;
+	private static char[][] room1;
+	private static char[][] room2;
+	private static char[][] room3;
 
 	public World(){
 		room1 = new char[][]{
@@ -45,7 +45,7 @@ public class World {
 		};
 	}
 	
-	public char[][] getRoom(int num) {
+	public static char[][] getRoom(int num) {
 		if(num == 1) {
 			return room1;
 		} else if(num == 2) {

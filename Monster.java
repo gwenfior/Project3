@@ -29,16 +29,6 @@ public class Monster extends Character{
 		return this.strength;
 	}
 
-	/*public void invisibleMonster(){
-		for(int x = 0; x < 10; x++){
-			for(int y = 0; y < 10; y++){
-				if(square[x][y] == this.character){
-					System.out.println("AAAA");
-					square[x][y] = ' ';
-				}
-			}
-		}
-	}*/
 
 
 	//this moves the monsters randomly around the room
