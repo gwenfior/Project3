@@ -15,12 +15,12 @@ public class Room{
 	private int currentY;
 	private ArrayList<Monster> monster = new ArrayList<Monster>();
 	private Player player1;
-	//private int random1 = 12;
-	//private int random2 = 12;
+	private int currentRoom;
 
 	/**this is the room constructor**/
 	public Room(Player player2){
-		square = World.getRoom(1); 
+		currentRoom = 1;
+		square = World.getRoom(currentRoom); 
 			/*new char[][]{
 			{'_', '_', '_', '_', '_', '_', '_', '_', '_', '_'},
 			{'|', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', '|'},
@@ -63,6 +63,18 @@ public class Room{
 		Random random = new Random();
 		int theNum = random.nextInt(monster.size());
 		if(X == 1){
+			if(square[currentX-1][currentY] == 'D'){
+				try{
+					currentRoom = currentRoom+1;
+					square = World.getRoom(currentRoom);
+					this.generateRoom();
+				}catch(Exception e){
+					currentRoom = 1;
+					square = World.getRoom(currentRoom);
+					this.generateRoom();
+				}
+			}
+
 			//this.moveMonster();
 			if(square[currentX-1][currentY] != '_' && square[currentX-1][currentY] != '|'){//if it is not a wall
 				if(square[currentX-1][currentY] != '!'){ //if it is not a monster

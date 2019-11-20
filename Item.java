@@ -47,6 +47,10 @@ public class Item
 		return this.type;
 	}
 
+	public void use(Player player){
+		System.out.println("You can't use that here!");
+	}
+
 	//allows items to be printed 
 	public String toString(){
 		return ("This " + this.name + " has a value of " + this.value + ", a strength of " + this.strength + " ,and a weight of " + this.weight + ".");  

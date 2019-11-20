@@ -182,6 +182,13 @@ public class Inventory{
 			System.out.println("The " + this.equippedArmor.getName() + ": equipped.");
 		}
 
-	}	
+	}
+
+	public Item getItem(){
+		this.print();
+		System.out.print("which item would you like? ");
+		int choice = sc.nextInt();
+		return items.get(choice-1);
+	}
 
 }

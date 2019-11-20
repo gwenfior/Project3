@@ -14,6 +14,7 @@ public class Menu {
 		System.out.println("r: equip armor");
 		System.out.println("f: drop item");
 		System.out.println("i: print player stats");
+		System.out.println("u: use an item");
 		System.out.println("q: quit");
 		System.out.println("------------------");
 	}

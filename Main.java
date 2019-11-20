@@ -54,6 +54,9 @@ public class Main {
 				case "i":
 					player.stats();
 					break;
+				case "u":
+					player.getInventory().getItem().use(player);	
+					break;
 				case "q":
 					System.out.println("Your progress will not be saved, you're quitting with " + player.getDiamonds() + " gold diamonds.");
 					System.out.println("Bye!");
