@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.ArrayList;
 public class Potion extends Item{
 	
 	//a usable potion class 
@@ -8,10 +9,11 @@ public class Potion extends Item{
 
 	}
 
-	public void use(Player player){
+	public void use(Player player, int index){
 		//add the value of the strength of the potion to the players health
 
 		player.setHealth(player.getHealth() + this.strength);
+		player.getInventory().delete(index);
 	}
 
 

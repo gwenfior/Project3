@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+
 //The inventory class holds all the methods for inventory and its instance variables
 //@author Justin
 public class Inventory{
@@ -92,6 +93,12 @@ public class Inventory{
 		}
 
 	}
+	
+	//removing item without drop method
+	public void delete(int index){
+		this.items.remove(index);
+	}
+
 	//prints out all the items in the inventory
 	public void print(){
 		int num = 1;
@@ -190,5 +197,14 @@ public class Inventory{
 		int choice = sc.nextInt();
 		return items.get(choice-1);
 	}
-
+	
+	public int getIndex(Item item){
+		int index = 0;
+		for(int i = 0; i < items.size(); i++){
+			if(items.get(i).equals(item)){
+				index = i;
+			}
+		}
+		return index;
+	}//end return index
 }

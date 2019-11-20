@@ -55,7 +55,9 @@ public class Main {
 					player.stats();
 					break;
 				case "u":
-					player.getInventory().getItem().use(player);	
+					Item item = player.getInventory().getItem();
+					int index = player.getInventory().getIndex(item);
+					item.use(player, index);	
 					break;
 				case "q":
 					System.out.println("Your progress will not be saved, you're quitting with " + player.getDiamonds() + " gold diamonds.");
