@@ -1,3 +1,5 @@
+import java.io.PrintWriter;
+
 //this class creates a player object.
 //It contains the variables of the player for it to battle,
 //hold items, and wear armor.
@@ -17,6 +19,21 @@ public class Player extends Character {
 		pack.add(ItemGenerator.generate());
 		pack.add(ItemGenerator.generate());
 
+	}
+
+	public void persist(PrintWriter pw){
+		//persisting basic player stuff
+		pw.println(name);
+		pw.println(health);
+		pw.println("Gold Diamonds: " + goldDiamonds);
+		//begin inventory persistance with 5 hyphens
+		pw.println("-----");
+		pw.println("Player Inventory");
+		pack.persist(pw);
+		//finish inventory with 5 hyphens
+		pw.println("-----");
+		pw.println(".");
+		//delimeter to signal that end of player persist method
 	}
 	
 	//this returns the inventory

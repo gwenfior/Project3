@@ -1,4 +1,5 @@
 import java.io.*;
+
 //A class that holds the methods to get information for the Item Class
 //it also holds the variables for Item objects
 //@author Justin
@@ -22,6 +23,18 @@ public class Item
 		this.value = value;
 		this.strength = strength;
 		this.type = itemType;
+
+	}
+
+	public void persist(PrintWriter pw){
+	
+		pw.println(name);
+		pw.println(type);
+		pw.println("Weight: " + weight);
+		pw.println("Value: " + value);
+		pw.println("Strength: " + strength);
+		//delimeter is a period signaling the end of all the information for this Item
+		pw.println(".");
 
 	}
 

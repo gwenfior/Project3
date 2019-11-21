@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.PrintWriter;
 
 //The inventory class holds all the methods for inventory and its instance variables
 //@author Justin
@@ -19,6 +20,28 @@ public class Inventory{
 		items = new ArrayList<Item>();
 		this.maxWeight = maxWeight;
 	}
+
+	public void persist(PrintWriter pw){
+		pw.println("Max Weight" + maxWeight);
+		
+		//iterate over and store each item in the inventory ArrayList
+		for(Item r : items){
+		//persist each item
+		r.persist(pw);
+		}
+		pw.println("Equipped Weapon: ");
+		 equippedWeapon.persist(pw);
+		
+		//if armor is equipped
+		if(equippedArmor != null){
+		pw.println("Equipped Armor: ");
+	       	equippedArmor.persist(pw);
+		}
+		
+		//delimeter to signal the end of the ArrayList
+		pw.println(".");
+	}
+
 	//adds an item to the inventory if the item won't put the inventory over the weight limit
 	public boolean add (Item item){
 		boolean canAdd = false;
@@ -49,13 +72,13 @@ public class Inventory{
 				totalWeight = this.totalWeight();
 			}
 		}//end of else
-		
+
 		if(totalWeight<=this.maxWeight){
 			canAdd = true;
 			this.items.add(item);
 			System.out.println("You added the " + item.getName() + " to your inventory.");
 		}//end of if
-		
+
 		return canAdd;
 	}//end of add()
 
@@ -93,7 +116,7 @@ public class Inventory{
 		}
 
 	}
-	
+
 	//removing item without drop method
 	public void delete(int index){
 		this.items.remove(index);
@@ -109,8 +132,8 @@ public class Inventory{
 				System.out.println("Item #"+ choose + " : " + this.items.get(i).getName());
 			}
 		}else {
-		System.out.println("You have no items in the inventory to print out.");
-		return;
+			System.out.println("You have no items in the inventory to print out.");
+			return;
 		}
 	}
 	//equips a weapon from all the weapons in the inventory
@@ -143,18 +166,18 @@ public class Inventory{
 			System.out.println("The " + this.equippedWeapon.getName() + ": equipped.");
 		}
 	}//end equipWeapon()	
-	
+
 	//returns what weapon the player is using
 	public Item getEquippedWeapon(){
 		return equippedWeapon;
 
 	}
-	
+
 	//returns what armor the player is wearing
 	public Item getEquippedArmor(){
 		return equippedArmor;
 	}
-	
+
 	//for the programmer, sets the intial weapon for the player
 	public void setWeapon(Item item){
 		this.equippedWeapon = item;
@@ -197,7 +220,7 @@ public class Inventory{
 		int choice = sc.nextInt();
 		return items.get(choice-1);
 	}
-	
+
 	public int getIndex(Item item){
 		int index = 0;
 		for(int i = 0; i < items.size(); i++){
