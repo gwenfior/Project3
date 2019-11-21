@@ -35,7 +35,7 @@ public class Item
 		pw.println("Strength: " + strength);
 		//delimeter is a period signaling the end of all the information for this Item
 		pw.println(".");
-
+		pw.close();
 	}
 
 	//gets the weight of an object

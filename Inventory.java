@@ -40,6 +40,7 @@ public class Inventory{
 		
 		//delimeter to signal the end of the ArrayList
 		pw.println(".");
+		pw.close();
 	}
 
 	//adds an item to the inventory if the item won't put the inventory over the weight limit

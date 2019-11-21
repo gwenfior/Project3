@@ -34,6 +34,7 @@ public class Player extends Character {
 		pw.println("-----");
 		pw.println(".");
 		//delimeter to signal that end of player persist method
+		pw.close();
 	}
 	
 	//this returns the inventory
