@@ -1,4 +1,5 @@
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 //this class creates a player object.
 //It contains the variables of the player for it to battle,
@@ -59,12 +60,14 @@ public class Player extends Character {
 
 	//attack method only in player that returns true if player kills monster, but false if player dies
 	public boolean attack(Monster monster){
+		Scanner sc = new Scanner(System.in);
 		boolean result = true;
+		String choice = "a";
 		int monsterHealth = monster.getHealth();
 		if(pack.getEquippedArmor() != null){
 			this.health = this.health + pack.getEquippedArmor().getStrength();
 		}
-		while(this.health >= 0 && monsterHealth >= 0){
+		while(this.health >= 0 && monsterHealth >= 0 && !choice.equals("r")){
 
 			//player attacks monster
 			monsterHealth -= this.pack.getEquippedWeapon().getStrength();
@@ -88,6 +91,12 @@ public class Player extends Character {
 				System.out.println(this.name + " has been killed by the " + monster.getName());
 				return result;
 
+			}
+			System.out.println("would you like to keep battling? (a - attack) (r - run)");
+			choice = sc.next();
+			if(choice.equals("r")){
+				System.out.println("You ran away!");
+				result = false;
 			}
 
 		}	
