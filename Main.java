@@ -22,7 +22,11 @@ public class Main {
 		newRoom.generateRoom();
 		String command  = "";
 		while(!command.equals("q")) {
-			Menu.printMenu();
+			try{
+				Menu.printMenu();
+			}catch(InterruptedException e){
+				
+			}
 			System.out.println("Please enter a command:");
 			command  = input.next();
 
