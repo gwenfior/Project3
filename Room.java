@@ -65,14 +65,18 @@ public class Room{
 		System.out.println("BBBBBB");
 		if(square[currentX-1][currentY] == 'D' || square[currentX+1][currentY] == 'D' || square[currentX][currentY-1] == 'D' || square[currentX][currentY+1] == 'D'){
 			System.out.println("I GARUNTEE WE WONT SEE THIS MESSAGE SALLY");
-			try{
+			if(currentRoom < 3){
 				currentRoom = currentRoom+1;
 				square = World.getRoom(currentRoom);
 				this.generateRoom();
-			}catch(Exception e){
+				currentX = 1;
+				currentY = 1;
+			}else{
 				currentRoom = 1;
 				square = World.getRoom(currentRoom);
 				this.generateRoom();
+				currentX = 1;
+				currentY = 1;
 			}
 		}
 		else if(X == 1){
