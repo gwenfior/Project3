@@ -27,23 +27,26 @@ public class Item
 	}
 
 	public Item(Scanner s){
-	this.name = s.nextLine();
-	String category = s.nextLine();
-	if(category.equals("ARMOR")){
-	this.type = ItemType.ARMOR;
-	}else if (category.equals("WEAPON")){
-	this.type = ItemType.WEAPON;
-	}else {
-	this.type = ItemType.OTHER;
+		this.name = s.nextLine();
+		String category = s.nextLine();
+		if(category.equals("ARMOR")){
+			this.type = ItemType.ARMOR;
+		}else if (category.equals("WEAPON")){
+			this.type = ItemType.WEAPON;
+		}else {
+			this.type = ItemType.OTHER;
+		}
+		s.next();
+		this.weight = s.nextInt();
+		s.next();
+		this.value = s.nextInt();
+		s.next();
+		this.strength = s.nextInt();
+		
 	}
-	this.weight = s.nextInt();
-	this.value = s.nextInt();
-	this.strength = s.nextInt();
-	s.nextLine();
-	}
-	
+
 	public void persist(PrintWriter pw){
-	
+
 		pw.println(name);
 		String category = String.valueOf(type);
 		pw.println(category);
@@ -61,7 +64,7 @@ public class Item
 	}
 	//gets strength of an object
 	public int getStrength(){
-	return this.strength;
+		return this.strength;
 	}
 
 	//get the value of, or what an item can be solved for
@@ -76,7 +79,7 @@ public class Item
 	public ItemType getType(){
 		return this.type;
 	}
-	
+
 	//use method for generic objects that can't be used by the player
 	public void use(Player player, int index){
 		System.out.println("You can't use that here!");

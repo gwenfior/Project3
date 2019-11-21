@@ -4,7 +4,7 @@ import java.io.PrintWriter;
 
 //The inventory class holds all the methods for inventory and its instance variables
 //@author Justin
-public class Inventory{
+public class Inventory {
 
 	private int maxWeight;
 	private Item equippedWeapon;
@@ -21,29 +21,46 @@ public class Inventory{
 		this.maxWeight = maxWeight;
 	}
 
-	/*public Inventory (Scanner s){
-	this.items = new ArrayList<Item>();
-	maxWeight = s.nextInt();
+	public Inventory (Scanner s) throws Exception{
+		this.items = new ArrayList<Item>();
+		s.next();
+		this.maxWeight = s.nextInt();
+		try{
+			while(true){
+				if(!s.nextLine().equals("-End-")){
+					Item thing = new Item(s);
+					this.items.add(thing);
+				}else {
+					throw new NoMoreItemsException();
+				}
+			}
+		} catch (NoMoreItemsException e) {
+		}	
+		s.next();
+		this.equippedWeapon = new Item(s);
+		while(!s.next().equals(".")){
+			equippedArmor = new Item(s);
+		}
+	}
 
-	}*/
-	
 	public void persist(PrintWriter pw){
-		pw.println("Max Weight" + maxWeight);
-		
+		pw.println("Max Weight: " + maxWeight);
+
 		//iterate over and store each item in the inventory ArrayList
 		for(Item r : items){
-		//persist each item
-		r.persist(pw);
+			//persist each item
+			r.persist(pw);
 		}
+		pw.println("-End-");
 		pw.println("Equipped Weapon: ");
-		 equippedWeapon.persist(pw);
-		
+		equippedWeapon.persist(pw);
+
 		//if armor is equipped
 		if(equippedArmor != null){
-		pw.println("Equipped Armor: ");
-	       	equippedArmor.persist(pw);
+			pw.println("Equipped Armor: ");
+			equippedArmor.persist(pw);
 		}
-		
+
 		//delimeter to signal the end of the ArrayList
 		pw.println(".");
 		pw.close();

@@ -1,0 +1,1 @@
+class NoMoreItemsException extends Exception{}
