@@ -18,11 +18,16 @@ public class Main {
 		System.out.println("You are a scavenger on a mission to find the rare magical Gold Diamond.");  
 		System.out.println("This diamond is hidden deep in a dungeon guarded by vicious trolls."); 
 		System.out.println("Your job is to defeat the trolls and obtain 10 pieces of the Gold Diamond to make it complete. Good luck!");
+		System.out.println("P.S. watch out for portals!! being by them will take you to a new room.");
 		System.out.println("---------------------------");
 		newRoom.generateRoom();
 		String command  = "";
 		while(!command.equals("q")) {
-			Menu.printMenu();
+			try{
+				Menu.printMenu();
+			}catch(InterruptedException e){
+				
+			}
 			System.out.println("Please enter a command:");
 			command  = input.next();
 
