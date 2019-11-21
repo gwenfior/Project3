@@ -1,4 +1,5 @@
 import java.io.PrintWriter;
+import java.util.Scanner;
 
 public class Book extends Item{
 
@@ -36,7 +37,6 @@ public class Book extends Item{
 		pw.println("Strength: " + strength);
 		pw.println(message);
 		pw.println(".");
-		pw.close();
 	}
 
 	public void use(Player player){

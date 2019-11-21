@@ -9,7 +9,7 @@ public class Player extends Character {
 
 	private Inventory pack;
 	private int goldDiamonds;
-	
+
 	/**This is the player Constructor*/
 	public Player(String name, int health){
 		super(name, health);
@@ -22,10 +22,24 @@ public class Player extends Character {
 
 	}
 
+	public Player(Scanner s){
+		this.name = s.nextLine();
+		s.next();
+		this.health = s.nextInt();
+		s.next();
+		this.goldDiamonds = s.nextInt();
+		s.nextLine();
+		s.nextLine();
+		this.pack = new Inventory(s);
+		s.nextLine();
+		s.nextLine();
+
+	}
+
 	public void persist(PrintWriter pw){
 		//persisting basic player stuff
 		pw.println(name);
-		pw.println(health);
+		pw.println("Health: " + health);
 		pw.println("Gold Diamonds: " + goldDiamonds);
 		//begin inventory persistance with 5 hyphens
 		pw.println("-----");
@@ -35,19 +49,18 @@ public class Player extends Character {
 		pw.println("-----");
 		pw.println(".");
 		//delimeter to signal that end of player persist method
-		pw.close();
 	}
-	
+
 	//this returns the inventory
 	public Inventory getInventory(){
 		return pack;
 	}
-	
+
 	//this returns the number of diamonds the player has found
 	public int getDiamonds(){
 		return this.goldDiamonds;
 	}
-	
+
 	//this prints out the player's current stats
 	public void stats(){
 		System.out.println("Name: " + this.name + " | Health: " + this.health);
@@ -73,9 +86,9 @@ public class Player extends Character {
 			monsterHealth -= this.pack.getEquippedWeapon().getStrength();
 			System.out.println(this.name + " has hit the " + monster.getName() + " for " + this.pack.getEquippedWeapon().getStrength() + " damage.");
 			try {
-			Thread.sleep(1000);
+				Thread.sleep(1000);
 			}catch (InterruptedException e) {
-			
+
 			}	
 			if(monsterHealth <= 0){
 				result = true;
