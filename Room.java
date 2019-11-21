@@ -62,9 +62,7 @@ public class Room{
 	public void movePlayer(int X, int Y){
 		Random random = new Random();
 		int theNum = random.nextInt(monster.size());
-		System.out.println("BBBBBB");
 		if(square[currentX-1][currentY] == 'D' || square[currentX+1][currentY] == 'D' || square[currentX][currentY-1] == 'D' || square[currentX][currentY+1] == 'D'){
-			System.out.println("I GARUNTEE WE WONT SEE THIS MESSAGE SALLY");
 			if(currentRoom < 3){
 				currentRoom = currentRoom+1;
 				square = World.getRoom(currentRoom);
@@ -80,21 +78,6 @@ public class Room{
 			}
 		}
 		else if(X == 1){
-			System.out.println("AAAAAA");
-			if(square[currentX-1][currentY] == 'D'){
-				System.out.println("I GARUNTEE WE WONT SEE THIS MESSAGE SALLY");
-				try{
-					currentRoom = currentRoom+1;
-					square = World.getRoom(currentRoom);
-					this.generateRoom();
-				}catch(Exception e){
-					currentRoom = 1;
-					square = World.getRoom(currentRoom);
-					this.generateRoom();
-				}
-			}
-
-			//this.moveMonster();
 			if(square[currentX-1][currentY] != '_' && square[currentX-1][currentY] != '|'){//if it is not a wall
 				if(square[currentX-1][currentY] != '!'){ //if it is not a monster
 					System.out.println(" ");
@@ -109,7 +92,6 @@ public class Room{
 					}//end printing the map again
 				}
 				else if(square[currentX-1][currentY] == '!'){//if it is a monster
-					//monster1 = MonsterGenerator.generate();//gene
 					boolean win = player1.attack(monster.get(theNum));//fight happens here
 					if(win == true){//if they win, they step on the monster
 						square[currentX][currentY] = ' ';
@@ -140,7 +122,6 @@ public class Room{
 			}
 		}//end if going up
 		else if(X == -1){
-			//this.moveMonster();
 			if(square[currentX+1][currentY] != '_' && square[currentX+1][currentY] != '|'){//if it is not a wall
 				if(square[currentX+1][currentY] != '!'){ //if it is not a monster
 					System.out.println(" ");
@@ -186,7 +167,6 @@ public class Room{
 		}//end if going down
 
 		else if(Y == 1){
-			//this.moveMonster();	
 			if(square[currentX][currentY-1] != '_' && square[currentX][currentY-1] != '|'){//if it is not a wall
 				if(square[currentX][currentY-1] != '!'){ //if it is not a monster
 					System.out.println(" ");
@@ -233,7 +213,6 @@ public class Room{
 
 		
 		else if(Y == -1){
-			//this.moveMonster();	
 			if(square[currentX][currentY+1] != '_' && square[currentX][currentY+1] != '|'){//if it is not a wall
 				if(square[currentX][currentY+1] != '!'){ //if it is not a monster
 					System.out.println(" ");
