@@ -1,3 +1,6 @@
+// This class contains the three rooms for our dungeon.
+// It contains a method to retrieve a room with an int parameter.
+// @author Gwen
 public class World {
 
 	private static char[][] room1;
