@@ -10,9 +10,27 @@ public class Book extends Item{
 		this.message = message;
 	}
 
+	public Book(Scanner s){
+	this.name = s.nextLine();
+	this.type = ItemType.OTHER;
+	s.next();
+	this.weight = s.nextInt();
+	s.next();
+	this.value = s.nextInt();
+	s.next();
+	this.strength = s.nextInt();
+	this.message = "";
+	String words = s.nextLine();
+	
+	while(!words.equals(".")) {
+	message = message + words + "\n";
+	words = s.nextLine();
+	}
+}
+
 	public void persist(PrintWriter pw){
 		pw.println(name);
-		pw.println(type);
+		pw.println("ItemType.OTHER");
 		pw.println("Weight: " + weight);
 		pw.println("Value: " + value);
 		pw.println("Strength: " + strength);
