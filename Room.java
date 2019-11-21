@@ -50,7 +50,8 @@ public class Room{
 	public void movePlayer(int X, int Y){
 		Random random = new Random();
 		int theNum = random.nextInt(monster.size());
-		if(square[currentX-1][currentY] == 'D' || square[currentX+1][currentY] == 'D' || square[currentX][currentY-1] == 'D' || square[currentX][currentY+1] == 'D'){
+		if(square[currentX-1][currentY] == 'P' || square[currentX+1][currentY] == 'P' || square[currentX][currentY-1] == 'P' 
+				|| square[currentX][currentY+1] == 'P'){
 			if(currentRoom < 3){
 				currentRoom = currentRoom+1;
 				square = World.getRoom(currentRoom);
