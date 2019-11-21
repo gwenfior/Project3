@@ -7,10 +7,10 @@ public class Item
 {
 
 
-	private ItemType type;
-	private String name;
-	private int weight;
-	private int value;
+	protected ItemType type;
+	protected String name;
+	protected int weight;
+	protected int value;
 	protected int strength;
 
 	/**
