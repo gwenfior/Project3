@@ -1,5 +1,5 @@
 import java.io.*;
-
+import java.util.Scanner;
 //A class that holds the methods to get information for the Item Class
 //it also holds the variables for Item objects
 //@author Justin
@@ -26,10 +26,27 @@ public class Item
 
 	}
 
+	public Item(Scanner s){
+	this.name = s.nextLine();
+	String category = s.nextLine();
+	if(category.equals("ARMOR")){
+	this.type = ItemType.ARMOR;
+	}else if (category.equals("WEAPON")){
+	this.type = ItemType.WEAPON;
+	}else {
+	this.type = ItemType.OTHER;
+	}
+	this.weight = s.nextInt();
+	this.value = s.nextInt();
+	this.strength = s.nextInt();
+	s.nextLine();
+	}
+	
 	public void persist(PrintWriter pw){
 	
 		pw.println(name);
-		pw.println(type);
+		String category = String.valueOf(type);
+		pw.println(category);
 		pw.println("Weight: " + weight);
 		pw.println("Value: " + value);
 		pw.println("Strength: " + strength);

@@ -21,6 +21,12 @@ public class Inventory{
 		this.maxWeight = maxWeight;
 	}
 
+	/*public Inventory (Scanner s){
+	this.items = new ArrayList<Item>();
+	maxWeight = s.nextInt();
+
+	}*/
+	
 	public void persist(PrintWriter pw){
 		pw.println("Max Weight" + maxWeight);
 		
