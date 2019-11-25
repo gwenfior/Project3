@@ -1,8 +1,5 @@
 import java.util.Scanner;
-<<<<<<< HEAD
 import java.io.PrintWriter;
-=======
->>>>>>> 78862b6975292868ab733fbcdfc58acb4aee3695
 
 public class Character{
 
@@ -13,6 +10,12 @@ public class Character{
 	public Character (String name, int health){
 		this.name = name;
 		this.health = health;
+
+	}
+
+	public Character(){
+		this.name = "default person";
+		this.health = 100;
 
 	}
 

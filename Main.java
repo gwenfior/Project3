@@ -72,10 +72,17 @@ public class Main {
 						//save the game state
 					System.out.println("Enter the name of the file you want to save to: ");
 					String fileName = input.next();
-					
+					try{	
 					PrintWriter p = new PrintWriter(fileName);
 					player.persist(p);
-					p.close();
+					p.close();        					
+					}catch(Exception e){
+					System.out.println("That name is invalid");
+					String enter = input.next();
+					}
+
+					
+					
 					System.exit(1);
 					}else if (choice.equals("q")){
 						//quit without saving		

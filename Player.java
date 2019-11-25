@@ -30,6 +30,8 @@ public class Player extends Character {
 		this.goldDiamonds = s.nextInt();
 		s.nextLine();
 		s.nextLine();
+		//hydrate the inventory
+		this.pack = new Inventory(s);
 		s.nextLine();
 		s.nextLine();
 	}
