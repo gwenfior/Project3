@@ -1,5 +1,8 @@
 import java.util.Scanner;
+<<<<<<< HEAD
 import java.io.PrintWriter;
+=======
+>>>>>>> 78862b6975292868ab733fbcdfc58acb4aee3695
 
 public class Character{
 
@@ -14,18 +17,13 @@ public class Character{
 	}
 
 	public Character(Scanner s){
+
 		this.name = s.nextLine();
 		this.health = s.nextInt();
 
 	}
 
-	public Character(){
-		this.name = "default person";
-		this.health = 100;
-
-	}
-
-	void persist(PrintWriter pw){
+	public void persist(PrintWriter pw){
 		pw.println(name);
 		pw.println(health);
 	}

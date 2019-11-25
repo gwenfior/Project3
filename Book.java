@@ -27,7 +27,7 @@ public class Book extends Item{
 	message = message + words + "\n";
 	words = s.nextLine();
 	}
-}
+	}
 
 	public void persist(PrintWriter pw){
 		pw.println(name);
