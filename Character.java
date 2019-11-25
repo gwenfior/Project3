@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Character{
 
 	//parent class of monster and player
@@ -8,6 +10,9 @@ public class Character{
 		this.name = name;
 		this.health = health;
 
+	}
+
+	public Character(Scanner s){
 	}
 
 	public String getName(){
