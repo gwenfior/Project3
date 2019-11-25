@@ -26,6 +26,14 @@ public class Item
 
 	}
 
+	public Item(){
+	this.name = "Default Item";
+	this.weight = 0;
+	this.value = 0;
+	this.strength = 0;
+	this.type = ItemType.OTHER;
+	}
+
 	public Item(Scanner s){
 		this.name = s.nextLine();
 		String category = s.nextLine();

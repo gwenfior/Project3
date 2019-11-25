@@ -1,3 +1,6 @@
+import java.util.Scanner;
+import java.io.PrintWriter;
+
 public class Character{
 
 	//parent class of monster and player
@@ -8,6 +11,23 @@ public class Character{
 		this.name = name;
 		this.health = health;
 
+	}
+
+	public Character(Scanner s){
+		this.name = s.nextLine();
+		this.health = s.nextInt();
+
+	}
+
+	public Character(){
+		this.name = "default person";
+		this.health = 100;
+
+	}
+
+	void persist(PrintWriter pw){
+		pw.println(name);
+		pw.println(health);
 	}
 
 	public String getName(){

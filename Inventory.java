@@ -21,20 +21,13 @@ public class Inventory {
 		this.maxWeight = maxWeight;
 	}
 
-	public Inventory (Scanner s) throws Exception{
+	public Inventory (Scanner s){
 		this.items = new ArrayList<Item>();
 		s.next();
 		this.maxWeight = s.nextInt();
-		try{
-			while(true){
-				if(!s.nextLine().equals("-End-")){
-					Item thing = new Item(s);
-					this.items.add(thing);
-				}else {
-					throw new NoMoreItemsException();
-				}
-			}
-		} catch (NoMoreItemsException e) {
+		while(!s.nextLine().equals("-End-")){
+			Item thing = new Item(s);
+			this.items.add(thing);
 		}	
 		s.next();
 		this.equippedWeapon = new Item(s);

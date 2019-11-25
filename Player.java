@@ -12,7 +12,7 @@ public class Player extends Character {
 
 	/**This is the player Constructor*/
 	public Player(String name, int health){
-		super(name, health);
+		super(name, health);	
 		pack = new Inventory(200);
 		Item initialWeapon = new Item(ItemType.WEAPON, "stick", 1, 0, 5);
 		pack.add(initialWeapon);
@@ -30,10 +30,8 @@ public class Player extends Character {
 		this.goldDiamonds = s.nextInt();
 		s.nextLine();
 		s.nextLine();
-		this.pack = new Inventory(s);
 		s.nextLine();
 		s.nextLine();
-
 	}
 
 	public void persist(PrintWriter pw){
