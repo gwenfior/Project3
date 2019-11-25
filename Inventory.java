@@ -120,16 +120,20 @@ public class Inventory {
 			}
 			System.out.println("Which item would you like to drop?");
 			System.out.print(": ");
-			int choice = sc.nextInt();
-			choice = choice -1;
-			System.out.println("The " + this.items.get(choice).getName() + " : removed.");
-			if(items.get(choice).equals(equippedWeapon)){
-				equippedWeapon = hands;
+			try{
+				int choice = sc.nextInt();
+				choice = choice -1;
+				System.out.println("The " + this.items.get(choice).getName() + " : removed.");
+				if(items.get(choice).equals(equippedWeapon)){
+					equippedWeapon = hands;
+				}
+				if(items.get(choice).equals(equippedArmor)){
+					equippedArmor = null;
+				}
+				this.items.remove(choice);
+			}catch(Exception e){
+				System.out.println("That is not an option.");
 			}
-			if(items.get(choice).equals(equippedArmor)){
-				equippedArmor = null;
-			}
-			this.items.remove(choice);
 		}
 
 	}
