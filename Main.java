@@ -9,8 +9,8 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		String name;
-		Player player = new Player("default name", 200);
-		Room newRoom = new Room(player);
+		Player player = new Player("default", 200);;
+		Room newRoom = new Room(player);;
 
 		System.out.println(" ");
 		System.out.println("Welcome to Dungeon Crawler!");
@@ -28,8 +28,11 @@ public class Main {
 			String restoreFile = input.nextLine();
 			try{
 				Scanner s = new Scanner(new FileReader(restoreFile));
-				newRoom = new Room(s);
-				player = new Player(s);
+				//newRoom = new Room(s);
+				Player player2 = new Player(s);
+				player = player2;
+				Room temp = new Room(player);
+				newRoom = temp;
 				s.close();
 			}catch (Exception f){
 				System.out.println("This file is not a valid save.");
@@ -40,12 +43,13 @@ public class Main {
 		}else {
 			//start from scratch
 			System.out.println("What would you like to name your character?");
-			name = input.nextLine();
-			player = new Player(name, 200);
+			String title = input.nextLine();
+			Player player1 = new Player(title,200);
+			player = player1;
 		//	newRoom = new Room(player);
 			newRoom.generateRoom();
 		}
-
+		
 		String command  = "";
 		while(!command.equals("q")) {
 			try{

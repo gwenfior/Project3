@@ -28,8 +28,8 @@ public class Player extends Character {
 		this.goldDiamonds = s.nextInt();
 		s.nextLine();	
 		try{
-		pack = new Inventory(s);}
-		catch(Exception e){
+		Inventory pack = new Inventory(s);
+		}catch(Exception e){
 		}
 	}
 

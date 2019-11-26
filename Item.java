@@ -68,7 +68,6 @@ public class Item
 		pw.println(category);
 
 		//delimeter is a period signaling the end of all the information for this Item
-		pw.println(".");
 	}
 
 	//gets the weight of an object
