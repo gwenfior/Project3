@@ -11,8 +11,11 @@ public class Book extends Item{
 		this.message = message;
 	}
 
-	public Book(Scanner s){
+	public Book(Scanner s)throws NoMoreItemsException{
 		this.name = s.nextLine();
+		if(name.equals("-End-")){
+		throw new NoMoreItemsException();
+		}
 		this.type = ItemType.OTHER;
 		s.nextLine();
 		this.weight = s.nextInt();
@@ -25,7 +28,7 @@ public class Book extends Item{
 			message = message + words + "\n";
 			words = s.nextLine();
 		}
-		s.nextLine();
+	
 	}
 
 	public void persist(PrintWriter pw){
@@ -35,11 +38,15 @@ public class Book extends Item{
 		pw.println(value);
 		pw.println(strength);
 		pw.println(message);
-		pw.println(".");
+	
 	}
 
-	public void use(Player player){
-		System.out.println(this.message);
+	public String getMessage(){
+	return this.message;
+	}
+
+	public void use(Player player, int index){
+		String words = player.getInventory().getItem(index).getMessage();
 	}
 
 

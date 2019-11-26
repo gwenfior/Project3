@@ -17,20 +17,22 @@ public class Player extends Character {
 		Item initialWeapon = new Item(ItemType.WEAPON, "stick", 1, 0, 5);
 		pack.add(initialWeapon);
 		pack.setWeapon(initialWeapon);
+		Item initialArmor = new Item(ItemType.ARMOR, "clothes", 0,0,0);
+		pack.setArmor(initialArmor);
 		pack.add(ItemGenerator.generate());
-		pack.add(ItemGenerator.generate());
+		pack.add(new Book(ItemType.OTHER, "Book", 5, 10, 0, "enemy of my enemy"));
 
 	}
 
 	public Player(Scanner s){
 		this.name = s.nextLine();
+		System.out.println("name: " + name);
 		this.health = s.nextInt();
-		this.goldDiamonds = s.nextInt();
-		s.nextLine();	
-		try{
-		Inventory pack = new Inventory(s);
-		}catch(Exception e){
-		}
+		System.out.println("health: " + health);
+		this.goldDiamonds = s.nextInt();	
+		System.out.println("Gold Diamonds: " + goldDiamonds);
+		pack = new Inventory(s);
+
 	}
 
 	public void persist(PrintWriter pw){
@@ -40,7 +42,7 @@ public class Player extends Character {
 		pw.println(goldDiamonds);
 		//begin inventory persistance with 5 hyphens
 		pack.persist(pw);
-		
+
 	}
 
 	//this returns the inventory
@@ -56,6 +58,10 @@ public class Player extends Character {
 	//this prints out the player's current stats
 	public void stats(){
 		System.out.println("Name: " + this.name + " | Health: " + this.health);
+		if(pack == null){
+			System.out.println("Inventory object is null");
+		}
+
 		if(pack.getEquippedArmor() != null){
 			System.out.println("Armor: " + pack.getEquippedArmor().getName() + " | Strength: " + pack.getEquippedArmor().getStrength());
 		}

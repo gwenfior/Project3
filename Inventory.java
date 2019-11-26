@@ -12,7 +12,7 @@ public class Inventory {
 	private ArrayList<Item> items;
 	Scanner sc = new Scanner(System.in);
 	private Item hands = new Item(ItemType.WEAPON, "hands", 0, 0, 1);
-
+	private Item skin = new Item(ItemType.ARMOR, "clothes", 0,0,0);
 	/**
 	 * Constructor for Objects of class Inventory
 	 */
@@ -21,21 +21,28 @@ public class Inventory {
 		this.maxWeight = maxWeight;
 	}
 
-	public Inventory(Scanner s)throws Exception{
-		try {
+	public Inventory(Scanner s){	
+		maxWeight = s.nextInt();
+		System.out.println("Inventory constructor printed");
 			items = new ArrayList<Item>();
+		/*try {
 			while(true) {
 			Item thing = new Item(s);
 			items.add(thing);
 			}
 		}catch(NoMoreItemsException e){
+		}	*/
+		Item item1 = new Item(s);
+		Item item2 = new Item(s);
+		Item item3 = new Item(s);
 
-		}	
-		maxWeight = s.nextInt();
+		System.out.println("MaxWeight: " + maxWeight);
+		//try{
 		this.equippedWeapon = new Item(s);
-		while(!s.next().equals(".")){
-			equippedArmor = new Item(s);
-		}
+		//}catch(NoMoreItemsException c){}
+		//try{
+		this.equippedArmor = new Item(s);
+		//}catch(NoMoreItemsException d){}
 		s.nextLine();
 		
 	}
@@ -43,19 +50,15 @@ public class Inventory {
 
 	public void persist(PrintWriter pw){
 		//iterate over and store each item in the inventory ArrayList
-		for(Item r : items){
-			//persist each item
-			r.persist(pw);
-		}
-		pw.println("-End-");
+		
 		pw.println(maxWeight);
-		equippedWeapon.persist(pw);
+		for(int i = 0;i<items.size();i++){
+		items.get(i).persist(pw);
 
-		//if armor is equipped
-		if(equippedArmor != null){
-			equippedArmor.persist(pw);
 		}
 
+		equippedWeapon.persist(pw);
+		equippedArmor.persist(pw);
 		//delimeter to signal the end of the ArrayList
 		pw.println(".");
 
@@ -130,7 +133,7 @@ public class Inventory {
 					equippedWeapon = hands;
 				}
 				if(items.get(choice).equals(equippedArmor)){
-					equippedArmor = null;
+					equippedArmor = skin;
 				}
 				this.items.remove(choice);
 			}catch(Exception e){
@@ -206,6 +209,10 @@ public class Inventory {
 		this.equippedWeapon = item;
 	}//end setWeapon
 
+	public void setArmor(Item item){
+		this.equippedArmor = item;
+	}
+
 	//equips armor from the inventory
 	public void equipArmor(){
 		ArrayList<Item> armorList = new ArrayList<Item>();
@@ -242,6 +249,10 @@ public class Inventory {
 		System.out.print("which item would you like? ");
 		int choice = sc.nextInt();
 		return items.get(choice-1);
+	}
+
+	public Item getItem(int index){
+	return items.get(index); 
 	}
 
 	public int getIndex(Item item){

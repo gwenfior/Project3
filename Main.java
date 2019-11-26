@@ -74,7 +74,9 @@ public class Main {
 					newRoom.movePlayer(0,-1);
 					break;
 				case "p":
-					player.getInventory().print();
+					Inventory i = player.getInventory();
+					i.print();
+					//player.getInventory().print();
 					break;
 				case "e":
 					player.getInventory().equipWeapon();
@@ -89,6 +91,8 @@ public class Main {
 					player.stats();
 					break;
 				case "u":
+					System.out.println("Which item would you like to use?");
+
 					Item item = player.getInventory().getItem();
 					int index = player.getInventory().getIndex(item);
 					item.use(player, index);	
@@ -106,6 +110,7 @@ public class Main {
 							player.persist(p);
 							p.close();        					
 						}catch(Exception e){
+							e.printStackTrace();
 							System.out.println("That name is invalid");
 						}	
 

@@ -13,6 +13,7 @@ public class Potion extends Item{
 		//add the value of the strength of the potion to the players health
 
 		player.setHealth(player.getHealth() + this.strength);
+		System.out.println(this.strength + " has been added to your health.");
 		player.getInventory().delete(index);
 	}
 

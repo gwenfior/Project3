@@ -34,12 +34,12 @@ public class Item
 		this.type = ItemType.OTHER;
 	}
 
-	public Item(Scanner s)throws NoMoreItemsException{
+	public Item(Scanner s)/*throws NoMoreItemsException*/{
 
 		this.name = s.nextLine();
-		if(name.equals("-End-")){
+		/*if(name.equals("-End-")){
 		throw new NoMoreItemsException();
-		}
+		}*/
 		System.out.println("name of Item: " + name);
 		this.weight = s.nextInt();
 		System.out.println("Weight is: " + weight);
@@ -55,7 +55,6 @@ public class Item
 		}else {
 			this.type = ItemType.OTHER;
 		}
-		s.nextLine();
 	}
 
 	public void persist(PrintWriter pw){
@@ -65,9 +64,7 @@ public class Item
 		pw.println(value);
 		pw.println(strength);
 		String category = String.valueOf(type);
-		pw.println(category);
-
-		//delimeter is a period signaling the end of all the information for this Item
+		pw.println(category);	
 	}
 
 	//gets the weight of an object
@@ -95,6 +92,10 @@ public class Item
 	//use method for generic objects that can't be used by the player
 	public void use(Player player, int index){
 		System.out.println("You can't use that here!");
+	}
+
+	public String getMessage(){
+	return "no message";
 	}
 
 	//allows items to be printed 
