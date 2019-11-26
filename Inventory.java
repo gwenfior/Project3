@@ -21,36 +21,38 @@ public class Inventory {
 		this.maxWeight = maxWeight;
 	}
 
-	public Inventory (Scanner s){
-		this.items = new ArrayList<Item>();
-		s.next();
-		this.maxWeight = s.nextInt();
-		while(!s.nextLine().equals("-End-")){
+	public Inventory(Scanner s)throws Exception{
+		try {
+			items = new ArrayList<Item>();
+			while(true) {
 			Item thing = new Item(s);
-			this.items.add(thing);
+			items.add(thing);
+			}
+		}catch(NoMoreItemsException e){
+
 		}	
-		s.next();
+		maxWeight = s.nextInt();
 		this.equippedWeapon = new Item(s);
 		while(!s.next().equals(".")){
 			equippedArmor = new Item(s);
 		}
+		s.nextLine();
+		
 	}
 
-	public void persist(PrintWriter pw){
-		pw.println("Max Weight: " + maxWeight);
 
+	public void persist(PrintWriter pw){
 		//iterate over and store each item in the inventory ArrayList
 		for(Item r : items){
 			//persist each item
 			r.persist(pw);
 		}
 		pw.println("-End-");
-		pw.println("Equipped Weapon: ");
+		pw.println(maxWeight);
 		equippedWeapon.persist(pw);
 
 		//if armor is equipped
 		if(equippedArmor != null){
-			pw.println("Equipped Armor: ");
 			equippedArmor.persist(pw);
 		}
 

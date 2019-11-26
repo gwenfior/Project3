@@ -24,31 +24,23 @@ public class Player extends Character {
 
 	public Player(Scanner s){
 		this.name = s.nextLine();
-		s.next();
 		this.health = s.nextInt();
-		s.next();
 		this.goldDiamonds = s.nextInt();
-		s.nextLine();
-		s.nextLine();
-		//hydrate the inventory
-		this.pack = new Inventory(s);
-		s.nextLine();
-		s.nextLine();
+		s.nextLine();	
+		try{
+		pack = new Inventory(s);}
+		catch(Exception e){
+		}
 	}
 
 	public void persist(PrintWriter pw){
 		//persisting basic player stuff
 		pw.println(name);
-		pw.println("Health: " + health);
-		pw.println("Gold Diamonds: " + goldDiamonds);
+		pw.println(health);
+		pw.println(goldDiamonds);
 		//begin inventory persistance with 5 hyphens
-		pw.println("-----");
-		pw.println("Player Inventory");
 		pack.persist(pw);
-		//finish inventory with 5 hyphens
-		pw.println("-----");
-		pw.println(".");
-		//delimeter to signal that end of player persist method
+		
 	}
 
 	//this returns the inventory

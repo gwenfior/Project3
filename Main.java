@@ -3,16 +3,15 @@
 
 import java.util.Scanner;
 import java.io.PrintWriter;
+import java.io.FileReader;
 
 public class Main {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		String name;
-
-		System.out.println("What would you like to name your character?");
-		name = input.nextLine();
-		Player player = new Player(name, 200);
+		Player player = new Player("default name", 200);
 		Room newRoom = new Room(player);
+
 		System.out.println(" ");
 		System.out.println("Welcome to Dungeon Crawler!");
 		System.out.println("---------------------------");
@@ -21,7 +20,32 @@ public class Main {
 		System.out.println("Your job is to defeat the trolls and obtain 10 pieces of the Gold Diamond to make it complete. Good luck!");
 		System.out.println("P.S. watch out for portals!! Being near them will take you to a new room.");
 		System.out.println("---------------------------");
-		newRoom.generateRoom();
+		System.out.println("Would you like to restore from a previously saved game? \n (yes - y) (no - n)");
+		String cmd = input.nextLine();
+		if(cmd.equals("y")){
+			//start with progress
+			System.out.println("What is the name of file you want to restore from?");
+			String restoreFile = input.nextLine();
+			try{
+				Scanner s = new Scanner(new FileReader(restoreFile));
+				newRoom = new Room(s);
+				player = new Player(s);
+				s.close();
+			}catch (Exception f){
+				System.out.println("This file is not a valid save.");
+				f.printStackTrace();
+				System.exit(1);
+			}
+
+		}else {
+			//start from scratch
+			System.out.println("What would you like to name your character?");
+			name = input.nextLine();
+			player = new Player(name, 200);
+		//	newRoom = new Room(player);
+			newRoom.generateRoom();
+		}
+
 		String command  = "";
 		while(!command.equals("q")) {
 			try{
@@ -30,7 +54,7 @@ public class Main {
 
 			}
 			System.out.println("Please enter a command:");
-			command  = input.next();
+			command  = input.nextLine();
 
 			switch(command) {
 				case "w":
@@ -67,23 +91,21 @@ public class Main {
 					break;
 				case "q":
 					System.out.println("Would you like to save your progress? \n (s - save)	(q - quit without saving)");
-					String choice = input.next();
+					String choice = input.nextLine();
 					if(choice.equals("s")){
 						//save the game state
-					System.out.println("Enter the name of the file you want to save to: ");
-					String fileName = input.next();
-					try{	
-					PrintWriter p = new PrintWriter(fileName);
-					player.persist(p);
-					p.close();        					
-					}catch(Exception e){
-					System.out.println("That name is invalid");
-					String enter = input.next();
-					}
+						System.out.println("Enter the name of the file you want to save to: ");
+						String fileName = input.nextLine();
+						try{	
+							PrintWriter p = new PrintWriter(fileName);
+						//	newRoom.persist(p);
+							player.persist(p);
+							p.close();        					
+						}catch(Exception e){
+							System.out.println("That name is invalid");
+						}	
 
-					
-					
-					System.exit(1);
+						System.exit(1);
 					}else if (choice.equals("q")){
 						//quit without saving		
 						System.out.println("Your progress will not be saved, you're quitting with " + player.getDiamonds() + " gold diamonds.");

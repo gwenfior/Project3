@@ -1,6 +1,8 @@
 import java.util.Scanner;
 import java.util.Random;
 import java.util.ArrayList;
+import java.io.PrintWriter;
+
 /**This class creates a room to print too the screen.
  * It also allows the player to move around the room.
  * It also moves monsters around the room.
@@ -30,7 +32,42 @@ public class Room{
 		currentY = 1;
 		player1 = player2;
 	}//end constructor
+
+	public Room(Scanner s){
+		this.player1 = new Player(s);
+		s.nextLine();
+		s.next();
+		this.currentRoom = s.nextInt();
+		this.player = '@';
+		s.next();
+		this.currentX = s.nextInt();
+		s.next();
+		this.currentY = s.nextInt();
+		for(int x = 0; x < 10; x++){
+			for(int y = 0; y < 10; y++){
+				String icon = s.next();
+				square[x][y] = icon.charAt(0);
+			}
+		}
 	
+	}
+
+
+	public void persist(PrintWriter pw){
+		player1.persist(pw);
+		//delimeter seperating player stuff and room stuff
+		pw.println("####");
+		pw.println("Current Room: " + currentRoom);
+		pw.println("currentX: " + currentX);
+		pw.println("currentY: " + currentY);
+
+		for(int x = 0; x < 10; x++){
+			for(int y = 0; y < 10; y++){
+				pw.print(square[x][y]);
+			}
+		}
+	}
+
 	//this prints out the original empty room
 	public void generateRoom(){
 		for(int x = 0; x < 10; x++){
@@ -44,7 +81,7 @@ public class Room{
 		}
 
 	}//end generateRoom
-	
+
 	//this moves the player and updates the board depending on that movement.
 	//If the spot is a monster, it initates a battle before updating.
 	public void movePlayer(int X, int Y){
@@ -65,7 +102,7 @@ public class Room{
 				currentX = 1;
 				currentY = 1;
 			}
-		}
+				}
 		else if(X == 1){
 			if(square[currentX-1][currentY] != '_' && square[currentX-1][currentY] != '|'){//if it is not a wall
 				if(square[currentX-1][currentY] != '!'){ //if it is not a monster
@@ -236,7 +273,7 @@ public class Room{
 			}
 		}//end if going right
 
-		
+
 		else if(Y == -1){
 			if(square[currentX][currentY+1] != '_' && square[currentX][currentY+1] != '|'){//if it is not a wall
 				if(square[currentX][currentY+1] != '!'){ //if it is not a monster
@@ -293,7 +330,7 @@ public class Room{
 				System.out.println("You can't move there!");
 			}
 		}//end if going left
-		
+
 		invisibleMonster();
 		for(int t = 0; t < monster.size(); t++){
 			monster.get(t).moveMonster(square);

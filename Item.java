@@ -27,40 +27,46 @@ public class Item
 	}
 
 	public Item(){
-	this.name = "Default Item";
-	this.weight = 0;
-	this.value = 0;
-	this.strength = 0;
-	this.type = ItemType.OTHER;
+		this.name = "Default Item";
+		this.weight = 0;
+		this.value = 0;
+		this.strength = 0;
+		this.type = ItemType.OTHER;
 	}
 
-	public Item(Scanner s){
+	public Item(Scanner s)throws NoMoreItemsException{
+
 		this.name = s.nextLine();
+		if(name.equals("-End-")){
+		throw new NoMoreItemsException();
+		}
+		System.out.println("name of Item: " + name);
+		this.weight = s.nextInt();
+		System.out.println("Weight is: " + weight);
+		this.value = s.nextInt();
+		System.out.println("Value is: " + value);
+		this.strength = s.nextInt();
+		System.out.println("Strength is: " + strength);
 		String category = s.nextLine();
-		if(category.equals("ARMOR")){
-			this.type = ItemType.ARMOR;
-		}else if (category.equals("WEAPON")){
+		if(category.equals("WEAPON")){
 			this.type = ItemType.WEAPON;
+		}else if(category.equals("ARMOR")){
+			this.type = ItemType.ARMOR;
 		}else {
 			this.type = ItemType.OTHER;
 		}
-		s.next();
-		this.weight = s.nextInt();
-		s.next();
-		this.value = s.nextInt();
-		s.next();
-		this.strength = s.nextInt();
-		
+		s.nextLine();
 	}
 
 	public void persist(PrintWriter pw){
 
 		pw.println(name);
+		pw.println(weight);
+		pw.println(value);
+		pw.println(strength);
 		String category = String.valueOf(type);
 		pw.println(category);
-		pw.println("Weight: " + weight);
-		pw.println("Value: " + value);
-		pw.println("Strength: " + strength);
+
 		//delimeter is a period signaling the end of all the information for this Item
 		pw.println(".");
 	}
