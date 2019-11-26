@@ -34,27 +34,40 @@ public class Item
 		this.type = ItemType.OTHER;
 	}
 
-	public Item(Scanner s)/*throws NoMoreItemsException*/{
-
+	public Item(Scanner s) throws NoMoreItemsException{
+		s.nextLine();
 		this.name = s.nextLine();
-		/*if(name.equals("-End-")){
-		throw new NoMoreItemsException();
-		}*/
-		System.out.println("name of Item: " + name);
-		this.weight = s.nextInt();
-		System.out.println("Weight is: " + weight);
-		this.value = s.nextInt();
-		System.out.println("Value is: " + value);
-		this.strength = s.nextInt();
-		System.out.println("Strength is: " + strength);
-		String category = s.nextLine();
-		if(category.equals("WEAPON")){
-			this.type = ItemType.WEAPON;
-		}else if(category.equals("ARMOR")){
-			this.type = ItemType.ARMOR;
-		}else {
-			this.type = ItemType.OTHER;
+		if(name.equals("-End-") || name.equals(".")){
+			try{}
+			catch(Exception e){
+				throw new NoMoreItemsException();
+			}
 		}
+		else{
+			System.out.println("name of Item: " + name);
+			String category = s.nextLine();
+			if(category.equals("WEAPON")){
+				this.type = ItemType.WEAPON;
+			}else if(category.equals("ARMOR")){
+				this.type = ItemType.ARMOR;
+			}else {
+				this.type = ItemType.OTHER;
+			}
+			System.out.println("type: " + type);
+			String thing = s.next();
+			this.weight = s.nextInt();
+			System.out.println("Weight is: " + weight);
+			thing = s.next();
+			this.value = s.nextInt();
+			System.out.println("Value is: " + value);
+			thing = s.next();
+			this.strength = s.nextInt();
+			System.out.println("Strength is: " + strength);
+			thing = s.nextLine();
+		}
+	}
+
+	public class NoMoreItemsException extends Exception{
 	}
 
 	public void persist(PrintWriter pw){

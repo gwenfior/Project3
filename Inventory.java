@@ -22,29 +22,36 @@ public class Inventory {
 	}
 
 	public Inventory(Scanner s){
+		System.out.println("making inventory");
+		String lines = s.nextLine();
 		String title = s.nextLine();
+		System.out.println(title);
 		String thing = s.next() + s.next();
+		System.out.println("got to before number " + thing);
 		maxWeight = s.nextInt();
+		System.out.println(maxWeight);
 		System.out.println("Inventory constructor printed");
 		items = new ArrayList<Item>();
 		try {
 			while(true) {
-			Item object = new Item(s);
-			items.add(object);
+				Item object = new Item(s);
+				items.add(object);
 			}
 		}catch(Exception e){
-		}	
-		Item item1 = new Item(s);
-		Item item2 = new Item(s);
-		Item item3 = new Item(s);
+		}
+		try{
+			Item item1 = new Item(s);
+			Item item2 = new Item(s);
+			Item item3 = new Item(s);
+		}catch(Exception t){}
 
 		System.out.println("MaxWeight: " + maxWeight);
-		//try{
+		try{
 		this.equippedWeapon = new Item(s);
-		//}catch(NoMoreItemsException c){}
-		//try{
+		}catch(Exception c){}
+		try{
 		this.equippedArmor = new Item(s);
-		//}catch(NoMoreItemsException d){}
+		}catch(Exception d){}
 		s.nextLine();
 		
 	}
