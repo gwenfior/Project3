@@ -26,12 +26,20 @@ public class Player extends Character {
 
 	public Player(Scanner s){
 		this.name = s.nextLine();
-		System.out.println("name: " + name);
-		this.health = s.nextInt();
-		System.out.println("health: " + health);
-		this.goldDiamonds = s.nextInt();	
-		System.out.println("Gold Diamonds: " + goldDiamonds);
-		pack = new Inventory(s);
+		if(this.name.equals("-----")){
+			pack = new Inventory(s);
+		}
+		else{
+			System.out.println("name: " + name);
+			String thing = s.next();
+			this.health = s.nextInt();
+			System.out.println("health: " + health);
+			String newLine = s.nextLine();
+			thing = s.next() + s.next();
+			this.goldDiamonds = s.nextInt();	
+			System.out.println("Gold Diamonds: " + goldDiamonds);
+		//pack = new Inventory(s);
+		}
 
 	}
 

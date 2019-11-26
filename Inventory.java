@@ -21,17 +21,19 @@ public class Inventory {
 		this.maxWeight = maxWeight;
 	}
 
-	public Inventory(Scanner s){	
+	public Inventory(Scanner s){
+		String title = s.nextLine();
+		String thing = s.next() + s.next();
 		maxWeight = s.nextInt();
 		System.out.println("Inventory constructor printed");
-			items = new ArrayList<Item>();
-		/*try {
+		items = new ArrayList<Item>();
+		try {
 			while(true) {
-			Item thing = new Item(s);
-			items.add(thing);
+			Item object = new Item(s);
+			items.add(object);
 			}
-		}catch(NoMoreItemsException e){
-		}	*/
+		}catch(Exception e){
+		}	
 		Item item1 = new Item(s);
 		Item item2 = new Item(s);
 		Item item3 = new Item(s);
