@@ -28,8 +28,6 @@ public class Main {
 			String restoreFile = input.nextLine();
 			try{
 				Scanner s = new Scanner(new FileReader(restoreFile));
-				
-				 
 				Player player2 = new Player(s);
 				player = player2;
 				newRoom = new Room(player);
@@ -106,7 +104,7 @@ public class Main {
 						String fileName = input.nextLine();
 						try{	
 							PrintWriter p = new PrintWriter(fileName);
-							//newRoom.persist(p);
+					
 							player.persist(p);
 							p.close();        					
 						}catch(Exception e){
