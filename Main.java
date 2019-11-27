@@ -28,11 +28,11 @@ public class Main {
 			String restoreFile = input.nextLine();
 			try{
 				Scanner s = new Scanner(new FileReader(restoreFile));
-				//newRoom = new Room(s);
+				Room realRoom = new Room(s);
+				newRoom = realRoom; 
 				Player player2 = new Player(s);
 				player = player2;
-				Room temp = new Room(player);
-				newRoom = temp;
+				
 				s.close();
 			}catch (Exception f){
 				System.out.println("This file is not a valid save.");

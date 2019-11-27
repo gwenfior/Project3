@@ -35,13 +35,13 @@ public class Room{
 
 	public Room(Scanner s){
 		this.player1 = new Player(s);
-		s.nextLine();
-		s.next();
+		String thing = s.nextLine();
+		thing = s.next();
 		this.currentRoom = s.nextInt();
 		this.player = '@';
-		s.next();
+		thing = s.next();
 		this.currentX = s.nextInt();
-		s.next();
+		thing = s.next();
 		this.currentY = s.nextInt();
 		for(int x = 0; x < 10; x++){
 			for(int y = 0; y < 10; y++){
@@ -57,9 +57,12 @@ public class Room{
 		player1.persist(pw);
 		//delimeter seperating player stuff and room stuff
 		pw.println("####");
-		pw.println("Current Room: " + currentRoom);
-		pw.println("currentX: " + currentX);
-		pw.println("currentY: " + currentY);
+		pw.print("Current Room: ");
+		pw.println(currentRoom);
+		pw.print("currentX: ");
+	        pw.println(currentX);
+		pw.print("currentY: ");
+		pw.println(currentY);
 
 		for(int x = 0; x < 10; x++){
 			for(int y = 0; y < 10; y++){
