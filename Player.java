@@ -28,14 +28,10 @@ public class Player extends Character {
 		this.name = s.nextLine();
 
 		System.out.println("name: " + name);
-		String thing = s.next();
 		this.health = s.nextInt();
 		System.out.println("health: " + health);
-		String newLine = s.nextLine();
-		thing = s.next() + s.next();
 		this.goldDiamonds = s.nextInt();	
 		System.out.println("Gold Diamonds: " + goldDiamonds);
-		thing = s.nextLine();
 		pack = new Inventory(s);
 		
 	}

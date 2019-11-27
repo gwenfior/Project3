@@ -39,18 +39,21 @@ public class Inventory {
 			}
 		}catch(Exception e){
 		}
-		try{
+		/*try{
 			Item item1 = new Item(s);
 			Item item2 = new Item(s);
 			Item item3 = new Item(s);
-		}catch(Exception t){}
+		}catch(Exception t){}*/
 
-		System.out.println("MaxWeight: " + maxWeight);
+		//System.out.println("MaxWeight: " + maxWeight);
 		try{
-		this.equippedWeapon = new Item(s);
+			System.out.println("EQUIPPED WEAPON");
+			thing = s.nextLine();
+			this.equippedWeapon = new Item(s);
 		}catch(Exception c){}
 		try{
-		this.equippedArmor = new Item(s);
+			System.out.println("EQUIPPED ARMOR");
+			this.equippedArmor = new Item(s);
 		}catch(Exception d){}
 		s.nextLine();
 		
