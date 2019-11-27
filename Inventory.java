@@ -59,11 +59,11 @@ public class Inventory {
 
 	public void persist(PrintWriter pw){
 		//iterate over and store each item in the inventory ArrayList
-		
+		pw.println("Player Inventory");	
+		pw.print("Max Weight: ");	
 		pw.println(maxWeight);
-		for(int i = 0;i<items.size();i++){
-		items.get(i).persist(pw);
-
+		for(Item i: items){
+		i.persist(pw);
 		}
 
 		equippedWeapon.persist(pw);

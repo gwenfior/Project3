@@ -12,7 +12,8 @@ public class Book extends Item{
 	}
 
 	public Book(Scanner s)throws NoMoreItemsException{
-		this.name = s.nextLine();
+		this.name = "Book";
+		s.nextLine();
 		if(name.equals("-End-")){
 		throw new NoMoreItemsException();
 		}
@@ -32,12 +33,16 @@ public class Book extends Item{
 	}
 
 	public void persist(PrintWriter pw){
-		pw.println(name);
+		pw.println("Book");
 		pw.println("ItemType.OTHER");
+		pw.print("Weight: ");
 		pw.println(weight);
+		pw.print("Value: ");
 		pw.println(value);
+		pw.print("Strength: ");
 		pw.println(strength);
 		pw.println(message);
+		pw.println(".");
 	
 	}
 

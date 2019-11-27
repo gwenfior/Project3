@@ -73,11 +73,15 @@ public class Item
 	public void persist(PrintWriter pw){
 
 		pw.println(name);
-		pw.println(weight);
-		pw.println(value);
-		pw.println(strength);
 		String category = String.valueOf(type);
-		pw.println(category);	
+		pw.println(category);
+		pw.print("Weight: ");
+		pw.println(weight);
+		pw.print("Value: ");
+		pw.println(value);
+		pw.print("Strength: ");
+		pw.println(strength);
+		pw.println(".");	
 	}
 
 	//gets the weight of an object
