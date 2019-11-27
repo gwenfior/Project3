@@ -37,7 +37,7 @@ public class Player extends Character {
 		System.out.println("Gold Diamonds: " + goldDiamonds);
 		thing = s.nextLine();
 		pack = new Inventory(s);
-		
+			
 	}
 
 	public void persist(PrintWriter pw){
@@ -73,7 +73,9 @@ public class Player extends Character {
 		if(pack.getEquippedArmor() != null){
 			System.out.println("Armor: " + pack.getEquippedArmor().getName() + " | Strength: " + pack.getEquippedArmor().getStrength());
 		}
+		if(pack.getEquippedWeapon() != null){
 		System.out.println("Weapon: " + pack.getEquippedWeapon().getName() + " | Weapon: " + pack.getEquippedWeapon().getStrength());
+		}
 		System.out.println("Gold Diamonds Collected: " + goldDiamonds);
 	}
 
@@ -90,7 +92,7 @@ public class Player extends Character {
 
 			//player attacks monster
 			monsterHealth -= this.pack.getEquippedWeapon().getStrength();
-			System.out.println(this.name + " has hit the " + monster.getName() + " for " + this.pack.getEquippedWeapon().getStrength() + " damage.");
+			System.out.println("You hit the " + monster.getName() + " for " + this.pack.getEquippedWeapon().getStrength() + " damage.");
 			try {
 				Thread.sleep(1000);
 			}catch (InterruptedException e) {
@@ -98,7 +100,7 @@ public class Player extends Character {
 			}	
 			if(monsterHealth <= 0){
 				result = true;
-				System.out.println(monster.getName()+ " has been killed by "+ this.name + ".");
+				System.out.println("You killed the " + monster.getName());
 				goldDiamonds++;
 				return result;
 			}

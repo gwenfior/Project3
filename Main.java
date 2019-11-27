@@ -9,8 +9,8 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		String name;
-		Player player = new Player("default", 200);;
-		Room newRoom = new Room(player);;
+		Player player = new Player("default", 200);
+		Room newRoom = new Room(player);
 
 		System.out.println(" ");
 		System.out.println("Welcome to Dungeon Crawler!");
@@ -74,9 +74,7 @@ public class Main {
 					newRoom.movePlayer(0,-1);
 					break;
 				case "p":
-					Inventory i = player.getInventory();
-					i.print();
-					//player.getInventory().print();
+					player.getInventory().print();
 					break;
 				case "e":
 					player.getInventory().equipWeapon();

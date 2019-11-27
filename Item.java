@@ -38,6 +38,7 @@ public class Item
 		s.nextLine();
 		this.name = s.nextLine();
 		if(name.equals("-End-") || name.equals(".")){
+			System.out.println("The program got to the 'end'");
 			try{}
 			catch(Exception e){
 				throw new NoMoreItemsException();

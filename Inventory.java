@@ -29,7 +29,6 @@ public class Inventory {
 		String thing = s.next() + s.next();
 		System.out.println("got to before number " + thing);
 		maxWeight = s.nextInt();
-		System.out.println(maxWeight);
 		System.out.println("Inventory constructor printed");
 		items = new ArrayList<Item>();
 		try {
@@ -52,7 +51,7 @@ public class Inventory {
 		try{
 		this.equippedArmor = new Item(s);
 		}catch(Exception d){}
-		s.nextLine();
+		
 		
 	}
 
@@ -65,9 +64,13 @@ public class Inventory {
 		for(Item i: items){
 		i.persist(pw);
 		}
-
+		pw.println("-End-");
+		if(equippedWeapon != null){
 		equippedWeapon.persist(pw);
+		}
+		if(equippedArmor != null){
 		equippedArmor.persist(pw);
+		}
 		//delimeter to signal the end of the ArrayList
 		pw.println(".");
 
