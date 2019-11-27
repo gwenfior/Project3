@@ -39,8 +39,11 @@ public class Player extends Character {
 	public void persist(PrintWriter pw){
 		//persisting basic player stuff
 		pw.println(name);
+		pw.print("Health: ");
 		pw.println(health);
+		pw.print("Gold Diamonds: ");
 		pw.println(goldDiamonds);
+		pw.println("-----");
 		//begin inventory persistance with 5 hyphens
 		pack.persist(pw);
 
