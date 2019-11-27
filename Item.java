@@ -36,10 +36,10 @@ public class Item
 
 	public Item(Scanner s) throws NoMoreItemsException{
 		s.nextLine();
-		//System.out.println("The place holder: " + idk);
+
 		this.name = s.nextLine();
 		if(name.equals("-End-") || name.equals(".")){
-	//		System.out.println("leaving the item reader");
+
 			this.name = "-End-";
 			try{}
 			catch(Exception e){
@@ -48,7 +48,7 @@ public class Item
 			}
 		}
 		else{
-			System.out.println("name of Item: " + name);
+
 			String category = s.nextLine();
 			if(category.equals("WEAPON")){
 				this.type = ItemType.WEAPON;
@@ -57,16 +57,16 @@ public class Item
 			}else {
 				this.type = ItemType.OTHER;
 			}
-			System.out.println("type: " + type);
+
 			String thing = s.next();
 			this.weight = s.nextInt();
-			System.out.println("Weight is: " + weight);
+
 			thing = s.next();
 			this.value = s.nextInt();
-			System.out.println("Value is: " + value);
+
 			thing = s.next();
 			this.strength = s.nextInt();
-			System.out.println("Strength is: " + strength);
+
 			thing = s.nextLine();
 		}
 	}
@@ -116,7 +116,7 @@ public class Item
 	}
 
 	public String getMessage(){
-	return "no message";
+		return "no message";
 	}
 
 	//allows items to be printed 

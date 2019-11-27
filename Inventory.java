@@ -24,11 +24,9 @@ public class Inventory {
 	public Inventory(Scanner s){
 		String lines = s.nextLine();
 		String title = s.nextLine();
-		System.out.println(title);
 		String thing = s.next() + s.next();
 		thing = s.next() + s.next();
 		maxWeight = s.nextInt();
-		System.out.println(maxWeight);
 		items = new ArrayList<Item>();
 		boolean go = true;
 		while(go == true) {
@@ -36,7 +34,7 @@ public class Inventory {
 				Item object = new Item(s);
 				if(object.getName().equals("-End-")){
 					go = false;
-		//			System.out.println("we done");
+
 				}
 				else{
 					items.add(object);
@@ -45,18 +43,17 @@ public class Inventory {
 				go = false;
 			}
 		}
-	
+
 		try{
-			System.out.println("EQUIPPED WEAPON");
-		//	thing = s.next();
-		//	System.out.println(thing);
+
+
+
 			this.equippedWeapon = new Item(s);
-		//	System.out.println("got weapon");
-			System.out.println("EQUIPPED ARMOR");
+
 			this.equippedArmor = new Item(s);
-		//	System.out.println("got armor");
+
 		}catch(Exception d){}
-		
+
 	}
 
 
@@ -265,7 +262,7 @@ public class Inventory {
 	}
 
 	public Item getItem(int index){
-	return items.get(index); 
+		return items.get(index); 
 	}
 
 	public int getIndex(Item item){
