@@ -35,8 +35,9 @@ public class Room{
 
 	public Room(Scanner s){
 		this.player1 = new Player(s);
-		String thing = s.nextLine();
-		thing = s.next();
+		String skip = s.nextLine();
+		String thing = s.next();
+		System.out.println("This should be CurrentRoom: " + thing);
 		this.currentRoom = s.nextInt();
 		this.player = '@';
 		thing = s.next();
@@ -45,7 +46,7 @@ public class Room{
 		this.currentY = s.nextInt();
 		for(int x = 0; x < 10; x++){
 			for(int y = 0; y < 10; y++){
-				String icon = s.next();
+				String icon = s.nextLine();
 				square[x][y] = icon.charAt(0);
 			}
 		}
@@ -56,8 +57,7 @@ public class Room{
 	public void persist(PrintWriter pw){
 		player1.persist(pw);
 		//delimeter seperating player stuff and room stuff
-		pw.println("####");
-		pw.print("Current Room: ");
+		pw.print("CurrentRoom: ");
 		pw.println(currentRoom);
 		pw.print("currentX: ");
 	        pw.println(currentX);
@@ -66,7 +66,7 @@ public class Room{
 
 		for(int x = 0; x < 10; x++){
 			for(int y = 0; y < 10; y++){
-				pw.print(square[x][y]);
+				pw.println(square[x][y]);
 			}
 		}
 	}

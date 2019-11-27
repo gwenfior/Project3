@@ -106,7 +106,7 @@ public class Main {
 						String fileName = input.nextLine();
 						try{	
 							PrintWriter p = new PrintWriter(fileName);
-						//	newRoom.persist(p);
+							newRoom.persist(p);
 							player.persist(p);
 							p.close();        					
 						}catch(Exception e){
