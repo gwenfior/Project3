@@ -28,16 +28,26 @@ public class Inventory {
 		System.out.println(title);
 		String thing = s.next() + s.next();
 		System.out.println("got to before number " + thing);
+		thing = s.next() + s.next();
 		maxWeight = s.nextInt();
 		System.out.println(maxWeight);
 		System.out.println("Inventory constructor printed");
 		items = new ArrayList<Item>();
-		try {
-			while(true) {
+		boolean go = true;
+		while(go == true) {
+			try{
 				Item object = new Item(s);
-				items.add(object);
+				if(object.getName().equals("-End-")){
+					go = false;
+					System.out.println("we done");
+				}
+				else{
+					items.add(object);
+				}
+			}catch(Item.NoMoreItemsException e){
+				go = false;
+				System.out.println("we done");
 			}
-		}catch(Exception e){
 		}
 		/*try{
 			Item item1 = new Item(s);
@@ -48,15 +58,15 @@ public class Inventory {
 		//System.out.println("MaxWeight: " + maxWeight);
 		try{
 			System.out.println("EQUIPPED WEAPON");
-			thing = s.nextLine();
+			thing = s.next();
+			System.out.println(thing);
 			this.equippedWeapon = new Item(s);
-		}catch(Exception c){}
-		try{
+			System.out.println("got the weapon");
 			System.out.println("EQUIPPED ARMOR");
 			this.equippedArmor = new Item(s);
+			System.out.println("get the armor");
 		}catch(Exception d){}
 		s.nextLine();
-		
 	}
 
 
@@ -66,9 +76,9 @@ public class Inventory {
 		pw.print("Max Weight: ");	
 		pw.println(maxWeight);
 		for(Item i: items){
-		i.persist(pw);
+			i.persist(pw);
 		}
-
+		pw.println("-End-");
 		equippedWeapon.persist(pw);
 		equippedArmor.persist(pw);
 		//delimeter to signal the end of the ArrayList

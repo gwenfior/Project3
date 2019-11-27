@@ -36,11 +36,15 @@ public class Item
 
 	public Item(Scanner s) throws NoMoreItemsException{
 		s.nextLine();
+		//System.out.println("The place holder: " + idk);
 		this.name = s.nextLine();
 		if(name.equals("-End-") || name.equals(".")){
+			System.out.println("leaving the item reader");
+			this.name = "-End-";
 			try{}
 			catch(Exception e){
 				throw new NoMoreItemsException();
+
 			}
 		}
 		else{

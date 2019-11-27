@@ -9,8 +9,8 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
 		String name;
-		Player player = new Player("default", 200);;
-		Room newRoom = new Room(player);;
+		Player player = new Player("default", 200);
+		Room newRoom = new Room(player);
 
 		System.out.println(" ");
 		System.out.println("Welcome to Dungeon Crawler!");
@@ -46,7 +46,7 @@ public class Main {
 			String title = input.nextLine();
 			Player player1 = new Player(title,200);
 			player = player1;
-		//	newRoom = new Room(player);
+			newRoom = new Room(player);
 			newRoom.generateRoom();
 		}
 		
