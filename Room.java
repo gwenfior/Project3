@@ -35,9 +35,7 @@ public class Room{
 
 	public Room(Scanner s){
 		this.player1 = new Player(s);
-		String skip = s.nextLine();
 		String thing = s.next();
-		System.out.println("This should be CurrentRoom: " + thing);
 		this.currentRoom = s.nextInt();
 		this.player = '@';
 		thing = s.next();
