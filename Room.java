@@ -33,7 +33,7 @@ public class Room{
 		player1 = player2;
 	}//end constructor
 
-	public Room(Scanner s){
+	/*public Room(Scanner s){
 		this.player1 = new Player(s);
 		String thing = s.next();
 		this.currentRoom = s.nextInt();
@@ -44,13 +44,13 @@ public class Room{
 		this.currentY = s.nextInt();
 		for(int x = 0; x < 10; x++){
 			for(int y = 0; y < 10; y++){
-				String icon = s.next();
+				String icon = s.next().charAt(0);
 				square[x][y] = icon.charAt(0);
 			}
-			icon = s.nextLine();
+			icon = s.nextLine().charAt(0);
 		}
 	
-	}
+	}*/
 
 
 	public void persist(PrintWriter pw){
