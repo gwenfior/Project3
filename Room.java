@@ -46,9 +46,10 @@ public class Room{
 		this.currentY = s.nextInt();
 		for(int x = 0; x < 10; x++){
 			for(int y = 0; y < 10; y++){
-				String icon = s.nextLine();
+				String icon = s.next();
 				square[x][y] = icon.charAt(0);
 			}
+			icon = s.nextLine();
 		}
 	
 	}
