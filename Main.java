@@ -11,6 +11,7 @@ public class Main {
 		String name;
 		Player player = new Player("default", 200);
 		Room newRoom = new Room(player);
+		boolean givenKey = false;
 
 		System.out.println(" ");
 		System.out.println("Welcome to Dungeon Crawler!");
@@ -127,8 +128,9 @@ public class Main {
 					System.out.println("No match.");
 					break;
 			}
-			if(player.getDiamonds() == 10){
+			if(player.getDiamonds() == 20 && givenKey == false){
 				System.out.println("You won!!");
+				givenKey = true;
 				System.out.println("If you want to keep playing, go forth. But if you want to leave, hit q. Your progress will not be saved.");
 			}
 		}//end while
