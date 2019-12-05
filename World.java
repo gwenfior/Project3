@@ -1,12 +1,18 @@
-// This class contains the three rooms for our dungeon.
-// It contains a method to retrieve a room with an int parameter.
-// @author Gwen
+/**
+This class contains three different rooms for the Player and Monsters to move around and battle in.
+@author Dungeon Crawlers
+  */
 public class World {
 
 	private static char[][] room1;
 	private static char[][] room2;
 	private static char[][] room3;
 
+	/**
+	Static method that returns a room when called.
+	@param num int for which room to return
+	@return char[][]
+	  */
 	public static char[][] getRoom(int num) {
 		if(num == 1) {
 			 room1 = new char[][]{
