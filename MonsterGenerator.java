@@ -1,10 +1,10 @@
 import java.util.Random;
 import java.util.ArrayList;
-//this class contains one static method that generates a random monster
-//the monster can have a random name and random strength within reason
-//higher chances of generating weaker monsters
-//@author Justin
 
+/**
+A class that randomly generates a monster, of which could be weak or strong, from one static method.
+@author Dungeon Crawlers
+  */
 public class MonsterGenerator{
 
 	//generates a random Monster
