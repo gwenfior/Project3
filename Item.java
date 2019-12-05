@@ -66,7 +66,9 @@ public class Item
 
 			thing = s.next();
 			this.strength = s.nextInt();
-
+			if(name.equals("Book")){
+				String message = s.nextLine();
+			}
 			thing = s.nextLine();
 		}
 	}
