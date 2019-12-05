@@ -43,7 +43,6 @@ public class Book extends Item{
 		pw.println(value);
 		pw.print("Strength: ");
 		pw.println(strength);
-		pw.println(message);
 		pw.println(".");
 	
 	}
