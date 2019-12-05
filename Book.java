@@ -13,23 +13,25 @@ public class Book extends Item{
 
 	public Book(Scanner s)throws NoMoreItemsException{
 		this.name = "Book";
-		s.nextLine();
-		if(name.equals("-End-")){
-		throw new NoMoreItemsException();
+		String category = s.nextLine();
+		if(category.equals("WEAPON")){
+			this.type = ItemType.WEAPON;
+		}else if(category.equals("ARMOR")){
+			this.type = ItemType.ARMOR;
+		}else {
+			this.type = ItemType.OTHER;
 		}
-		this.type = ItemType.OTHER;
-		s.nextLine();
-		this.weight = s.nextInt();
-		this.value = s.nextInt();
-		this.strength = s.nextInt();
-		this.message = "";
-		String words = s.nextLine();
 
-		while(!words.equals(".")) {
-			message = message + words + "\n";
-			words = s.nextLine();
-		}
-	
+		String thing = s.next();
+		this.weight = s.nextInt();
+
+		thing = s.next();
+		this.value = s.nextInt();
+
+		thing = s.next();
+		this.strength = s.nextInt();
+		String message = s.nextLine();
+		thing = s.nextLine();	
 	}
 
 	public void persist(PrintWriter pw){
