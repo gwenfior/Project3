@@ -6,9 +6,8 @@ public class Book extends Item{
 	//usable book class that will generate books that the "use" method will override	
 	private String message;
 
-	public Book(ItemType itemType, String name, int weight, int value, int strength, String message){
+	public Book(ItemType itemType, String name, int weight, int value, int strength){
 		super(ItemType.OTHER, name, weight, value, strength);
-		this.message = message;
 	}
 
 	public Book(Scanner s)throws NoMoreItemsException{
@@ -43,7 +42,6 @@ public class Book extends Item{
 		pw.println(value);
 		pw.print("Strength: ");
 		pw.println(strength);
-		pw.println(message);
 		pw.println(".");
 	
 	}
