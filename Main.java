@@ -98,7 +98,8 @@ public class Main {
 
 					Item item = player.getInventory().getItem();
 					int index = player.getInventory().getIndex(item);
-					item.use(player, index);	
+					item.use(player, index);
+					/*TODO if the item's name is magic key, then set a boolean to true to go to a new while loop for bonus level*/
 					break;
 				case "q":
 					System.out.println("Would you like to save your progress? \n (s - save)	(q - quit without saving)");
@@ -131,6 +132,7 @@ public class Main {
 			if(player.getDiamonds() == 20 && givenKey == false){
 				System.out.println("You won!!");
 				givenKey = true;
+				/*TODO here, put in add magic keys*/
 				System.out.println("If you want to keep playing, go forth. But if you want to leave, hit q. Your progress will not be saved.");
 			}
 		}//end while
