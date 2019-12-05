@@ -1,12 +1,17 @@
-
 import java.util.Random;
 import java.util.ArrayList;
-//this class contains one static method that generates a random item
-//the random item could be a Weapon, Armor, or Other miscellaneous items
-//the weapons and armor are made of a specific material which is also randomly assigned to the item
-//@author Justin
+
+/**
+This class contains one static method that generates a random item,
+the random item could be a Weapon, Armor, or Other miscellaneous item, and
+the weapons and armor are made of a specific material which is also randomly assigned to the item.
+@author Dungeon Crawlers
+ */
 public class ItemGenerator{
-	//generates a random item 
+	
+        /**
+	This method generates a random item and is static.
+	*/	  
 	public static Item generate(){
 
 
