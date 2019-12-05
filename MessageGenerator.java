@@ -1,4 +1,9 @@
 import java.util.Random;
+
+/**
+This class generates a message for a book to have when used from one static method.
+@author Dungeon Crawlers
+  */
 public class MessageGenerator {
 
 
