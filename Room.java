@@ -33,28 +33,49 @@ public class Room{
 		player1 = player2;
 	}//end constructor
 
-	/*public Room(Scanner s){
-		this.player1 = new Player(s);
-		String thing = s.next();
+	public Room(Scanner s, Player player2){
+		System.out.println("beginning the room load");
+		this.player1 = player2;
+		String thing = s.nextLine();
+		thing = s.nextLine();
+		thing = s.next();
+		System.out.println(thing);
 		this.currentRoom = s.nextInt();
+		System.out.println(currentRoom);
 		this.player = '@';
 		thing = s.next();
 		this.currentX = s.nextInt();
+		System.out.println(currentX);
 		thing = s.next();
 		this.currentY = s.nextInt();
-		for(int x = 0; x < 10; x++){
+		System.out.println(currentY);
+		/*for(int x = 0; x < 10; x++){
 			for(int y = 0; y < 10; y++){
-				String icon = s.next().charAt(0);
+				String icon = s.next();
 				square[x][y] = icon.charAt(0);
 			}
-			icon = s.nextLine().charAt(0);
+			icon = s.nextLine();
+		}*/
+		square = World.getRoom(currentRoom);
+		square[currentX][currentY] = player;
+
+		monster.add(MonsterGenerator.generate());
+		monster.add(MonsterGenerator.generate());
+		monster.add(MonsterGenerator.generate());
+		monster.add(MonsterGenerator.generate());
+
+		for(int x = 0; x < 10; x++){
+			for(int y = 0; y < 10; y++){
+				System.out.print(square[x][y]);
+			}
+			System.out.println(" ");
 		}
-	
-	}*/
+
+	}
 
 
 	public void persist(PrintWriter pw){
-		player1.persist(pw);
+		//player1.persist(pw);
 		//delimeter seperating player stuff and room stuff
 		pw.print("CurrentRoom: ");
 		pw.println(currentRoom);
@@ -63,11 +84,13 @@ public class Room{
 		pw.print("currentY: ");
 		pw.println(currentY);
 
-		for(int x = 0; x < 10; x++){
+		/*for(int x = 0; x < 10; x++){
 			for(int y = 0; y < 10; y++){
-				pw.println(square[x][y]);
+				pw.print(square[x][y]);
+				pw.print(".");
 			}
-		}
+			pw.println();
+		}*/
 	}
 
 	//this prints out the original empty room
@@ -104,7 +127,7 @@ public class Room{
 				currentX = 1;
 				currentY = 1;
 			}
-				}
+		}
 		else if(X == 1){
 			if(square[currentX-1][currentY] != '_' && square[currentX-1][currentY] != '|'){//if it is not a wall
 				if(square[currentX-1][currentY] != '!'){ //if it is not a monster
