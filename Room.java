@@ -3,12 +3,12 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.io.PrintWriter;
 
-/**This class creates a room to print too the screen.
- * It also allows the player to move around the room.
- * It also moves monsters around the room.
- * @author Sally Burkley
- * */
-
+/**
+This class creates a room to print too the screen.
+It also allows the player to move around the room.
+It also moves monsters around the room.
+@author Dungeon Crawlers
+ **/
 public class Room{
 
 	private char[][] square;
@@ -19,7 +19,10 @@ public class Room{
 	private Player player1;
 	private int currentRoom;
 
-	/**this is the room constructor**/
+	/**
+	Constructor for the room.
+	@param player2 Player object
+	  */
 	public Room(Player player2){
 		currentRoom = 1;
 		square = World.getRoom(currentRoom); 
@@ -33,6 +36,11 @@ public class Room{
 		player1 = player2;
 	}//end constructor
 
+	/**
+	Hydration method for room.
+	@param s Scanner object
+	@param player2 Player object
+	  */
 	public Room(Scanner s, Player player2){
 		this.player1 = player2;
 		String thing = s.nextLine();
@@ -66,7 +74,10 @@ public class Room{
 
 	}
 
-
+	/**
+	Persistance method for room.
+	@param pw PrintWriter object
+	  */
 	public void persist(PrintWriter pw){
 		//player1.persist(pw);
 		//delimeter seperating player stuff and room stuff
@@ -86,7 +97,9 @@ public class Room{
 		}*/
 	}
 
-	//this prints out the original empty room
+	/**
+	Method that generates original room.
+	  */
 	public void generateRoom(){
 		for(int x = 0; x < 10; x++){
 			for(int y = 0; y < 10; y++){
@@ -100,8 +113,12 @@ public class Room{
 
 	}//end generateRoom
 
-	//this moves the player and updates the board depending on that movement.
-	//If the spot is a monster, it initates a battle before updating.
+	/**
+	This moves the player and updates the board depending on that movement.
+	If the spot is a monster, it initates a battle before updating.
+	@param X x-coordinate of Player
+	@param Y y-coordinate of Player
+	  */
 	public void movePlayer(int X, int Y){
 		Random random = new Random();
 		int theNum = random.nextInt(monster.size());
@@ -356,12 +373,13 @@ public class Room{
 	}//end move player
 
 
-	//this method makes the monsters disappear so they can then move
+	/**
+	Method for removing monsters from room when moved.
+	  */
 	public void invisibleMonster(){
 		for(int x = 0; x < 10; x++){
 			for(int y = 0; y < 10; y++){
 				if(square[x][y] == '!'){
-					//System.out.println("AAAA");
 					square[x][y] = ' ';
 				}
 			}
