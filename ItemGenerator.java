@@ -87,7 +87,7 @@ public class ItemGenerator{
 			words  = new Potion(ItemType.OTHER,"Potion", rng.nextInt(10), rando, rng.nextInt(15)+5); 
 		}else if(rando<=2){
 
-			words = new Book(ItemType.OTHER,"Book",rng.nextInt(10), rando,0, messages.get(rng.nextInt(7)));
+			words = new Book(ItemType.OTHER,"Book",rng.nextInt(10), rando,0);
 		}else if(rando<=3){
 
 			words = new Item(ItemType.OTHER,others.get(rng.nextInt(7)), rando, rng.nextInt(5), 0);
