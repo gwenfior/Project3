@@ -23,6 +23,7 @@ public class Main {
 		System.out.println("Would you like to restore from a previously saved game? \n (yes - y) (no - n)");
 		String cmd = input.nextLine();
 		if(cmd.equals("y")){
+
 			//start with progress
 			System.out.println("What is the name of file you want to restore from?");
 			String restoreFile = input.nextLine();
@@ -48,6 +49,7 @@ public class Main {
 			player = player1;
 			newRoom = new Room(player);
 			newRoom.generateRoom();
+			
 		}
 		
 		String command  = "";

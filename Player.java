@@ -20,8 +20,9 @@ public class Player extends Character {
 		Item initialArmor = new Item(ItemType.ARMOR, "clothes", 0,0,0);
 		pack.setArmor(initialArmor);
 		pack.add(ItemGenerator.generate());
-		pack.add(new Book(ItemType.OTHER, "Book", 5, 10, 0, "enemy of my enemy"));
-
+		Item book = new Item(ItemType.OTHER, "Book", 1,4,6);
+		pack.add(book);	
+	
 	}
 
 	public Player(Scanner s){

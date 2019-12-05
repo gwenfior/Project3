@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Book extends Item{
 
 	//usable book class that will generate books that the "use" method will override	
-	private String message;
 
 	public Book(ItemType itemType, String name, int weight, int value, int strength){
 		super(ItemType.OTHER, name, weight, value, strength);
@@ -46,12 +45,8 @@ public class Book extends Item{
 	
 	}
 
-	public String getMessage(){
-	return this.message;
-	}
-
 	public void use(Player player, int index){
-		String words = player.getInventory().getItem(index).getMessage();
+		
 	}
 
 
