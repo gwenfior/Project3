@@ -1,6 +1,6 @@
-/**This class prints the menu.
- * It has one static method that prints the options the player may do.
- *@author Gwen
+/**
+This class prints the menu, it has one static method that prints the options the player may do.
+@author Dungeon Crawlers
  **/
 public class Menu {
 	public static void printMenu() throws InterruptedException {
