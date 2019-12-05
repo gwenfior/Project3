@@ -1,16 +1,20 @@
 import java.io.PrintWriter;
 import java.util.Scanner;
 
-//this class creates a player object.
-//It contains the variables of the player for it to battle,
-//hold items, and wear armor.
-//@author Justin
+/**
+This class creates a player object that inherits from Character, it has a name, health, inventory, and can wear armor and use weapons.
+@author Dungeon Crawlers
+  */
 public class Player extends Character {
 
 	private Inventory pack;
 	private int goldDiamonds;
 
-	/**This is the player Constructor*/
+	/**
+	Constructor for Player object.
+	@param name String
+	@param health int
+	  */
 	public Player(String name, int health){
 		super(name, health);	
 		pack = new Inventory(200);
@@ -25,6 +29,10 @@ public class Player extends Character {
 		pack.add(new Book(ItemType.OTHER, "Book", 5, 10, 0));
 	}
 
+	/**
+	Hydration method for a Player object.
+	@param s Scanner object
+	  */
 	public Player(Scanner s){
 		this.name = s.nextLine();
 		System.out.println("name: " + name);
@@ -39,6 +47,10 @@ public class Player extends Character {
 		//thing = s.nextLine();
 	}
 
+	/**
+	Persistance method for a Player object.
+	@param pw PrintWriter
+	  */
 	public void persist(PrintWriter pw){
 		//persisting basic player stuff
 		pw.println(name);
@@ -52,17 +64,25 @@ public class Player extends Character {
 
 	}
 
-	//this returns the inventory
+	/**
+	Method for getting Inventory.
+	@return Player's inventory
+	  */
 	public Inventory getInventory(){
 		return pack;
 	}
 
-	//this returns the number of diamonds the player has found
+	/**
+	Method for getting number of Gold Diamonds a Player has.
+	@return int
+	  */
 	public int getDiamonds(){
 		return this.goldDiamonds;
 	}
 
-	//this prints out the player's current stats
+	/**
+	Method for printing out Player's current stats.
+	  */
 	public void stats(){
 		System.out.println("Name: " + this.name + " | Health: " + this.health);
 		if(pack == null){
@@ -76,7 +96,11 @@ public class Player extends Character {
 		System.out.println("Gold Diamonds Collected: " + goldDiamonds);
 	}
 
-	//attack method only in player that returns true if player kills monster, but false if player dies
+	/**
+	Method for Player to attack a monster, returns true if they win and false if they die.
+	@param monster Monster object
+	@return boolean
+	  */
 	public boolean attack(Monster monster){
 		Scanner sc = new Scanner(System.in);
 		boolean result = true;
