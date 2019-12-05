@@ -116,9 +116,13 @@ public class Item
 
 	//use method for generic objects that can't be used by the player
 	public void use(Player player, int index){
+		if(this.name.equals("Book")){
+		String page = MessageGenerator.generate();
+		System.out.println(page);
+		}else {
 		System.out.println("You can't use that here!");
+		}
 	}
-
 	public String getMessage(){
 		return "no message";
 	}

@@ -23,11 +23,14 @@ public class Main {
 		System.out.println("Would you like to restore from a previously saved game? \n (yes - y) (no - n)");
 		String cmd = input.nextLine();
 		if(cmd.equals("y")){
+
 			//start with progress
 			System.out.println("What is the name of file you want to restore from?");
 			String restoreFile = input.nextLine();
 			try{
 				Scanner s = new Scanner(new FileReader(restoreFile));
+				
+				 
 				Player player2 = new Player(s);
 				player = player2;
 				newRoom = new Room(s, player);
@@ -46,6 +49,7 @@ public class Main {
 			player = player1;
 			newRoom = new Room(player);
 			newRoom.generateRoom();
+			
 		}
 		
 		String command  = "";
@@ -104,7 +108,7 @@ public class Main {
 						String fileName = input.nextLine();
 						try{	
 							PrintWriter p = new PrintWriter(fileName);
-					
+							//newRoom.persist(p);
 							player.persist(p);
 							newRoom.persist(p);	
 							p.close();        					

@@ -1,3 +1,4 @@
+
 import java.util.Random;
 import java.util.ArrayList;
 //this class contains one static method that generates a random item
@@ -11,12 +12,12 @@ public class ItemGenerator{
 
 		//random number generator
 		Random rng = new Random();
-		 int rando = rng.nextInt(11);
-		 int randMat = rng.nextInt(6);
-		 int  smallArm = rng.nextInt(5);
-		 int largeArm = rng.nextInt(4);
-		 int smallWeap = rng.nextInt(5);
-		 int largeWeap = rng.nextInt(6);
+		int rando = rng.nextInt(11);
+		int randMat = rng.nextInt(6);
+		int  smallArm = rng.nextInt(5);
+		int largeArm = rng.nextInt(4);
+		int smallWeap = rng.nextInt(5);
+		int largeWeap = rng.nextInt(6);
 
 
 		//create an arrayList of miscellaneous objects
@@ -28,16 +29,7 @@ public class ItemGenerator{
 		others.add("Food");
 		others.add("Tusk");
 		others.add("Vase");
-		
-		//create an arrayList of book messages
-		ArrayList<String> messages = new ArrayList<String>();
-		messages.add("Remember, to win the game, you must collect 10 gold diamonds that you get by killing monsters.");
-		messages.add("When you get a new item, check to see if you can use it.");
-		messages.add("Always remember to check your equipped weapon and armor to make sure the best possible armor or weapon is equipped.");
-	      	messages.add("Make sure to save and quit before you leave the game so your progress doesn't get lost");
-		messages.add("Some enemies are more common than others, so do your best to avoid powerful ones like dragons or serpents");
-		messages.add("Drop items that you can't use to make room for other items that can help you.");	
-		messages.add("When you get to the end of the game, you can keep playing to get the best weapons and armor.");
+
 
 		//create an arrayList of Materials
 		ArrayList<String> materials = new ArrayList<String>();
@@ -72,7 +64,7 @@ public class ItemGenerator{
 		smallWeapon.add("Fork");
 		smallWeapon.add("Ball and Chain");
 		smallWeapon.add("Pan");
-		
+
 		//heavyWeight weapons
 		ArrayList<String> largeWeapon = new ArrayList<String>();
 		largeWeapon.add("Sword");
@@ -91,7 +83,7 @@ public class ItemGenerator{
 		}else if(rando<=3){
 
 			words = new Item(ItemType.OTHER,others.get(rng.nextInt(7)), rando, rng.nextInt(5), 0);
-		
+
 		}else if (rando>= 4 && rando<6){
 			words  = new Item(ItemType.ARMOR, materials.get(randMat) + " " + smallArmor.get(smallArm),rng.nextInt(6)+5,rng.nextInt(6)+5,rng.nextInt(15) + 1);  
 		}else if (rando>=6 && rando <8){
@@ -107,3 +99,4 @@ public class ItemGenerator{
 	}
 
 }
+
