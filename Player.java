@@ -36,7 +36,6 @@ public class Player extends Character {
 		System.out.println("Gold Diamonds: " + goldDiamonds);
 		pack = new Inventory(s);
 		//thing = s.nextLine();
-		System.out.println("Leaving the player load");
 	}
 
 	public void persist(PrintWriter pw){
