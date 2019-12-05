@@ -2,8 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.PrintWriter;
 
-//The inventory class holds all the methods for inventory and its instance variables
-//@author Justin
+/**
+This class makes an inventory for a character to store items.
+@author Dungeon Crawlers
+  */
 public class Inventory {
 
 	private int maxWeight;
@@ -14,13 +16,18 @@ public class Inventory {
 	private Item hands = new Item(ItemType.WEAPON, "hands", 0, 0, 1);
 	private Item skin = new Item(ItemType.ARMOR, "clothes", 0,0,0);
 	/**
-	 * Constructor for Objects of class Inventory
+	 Constructor for Objects of class Inventory.
+	 @param maxWeight maxiumum weight for a charater to hold in their inventory
 	 */
 	public Inventory (int maxWeight){
 		items = new ArrayList<Item>();
 		this.maxWeight = maxWeight;
 	}
 
+	/**
+	Hydration method for inventory object.
+	@param s Scanner object
+	  */
 	public Inventory(Scanner s){
 		String lines = s.nextLine();
 		String title = s.nextLine();
@@ -57,6 +64,10 @@ public class Inventory {
 	}
 
 
+	/**
+	Persistance method for an inventory.
+	@param pw PrintWriter object
+	  */
 	public void persist(PrintWriter pw){
 		//iterate over and store each item in the inventory ArrayList
 		pw.println("Player Inventory");	
@@ -74,7 +85,11 @@ public class Inventory {
 
 	}
 
-	//adds an item to the inventory if the item won't put the inventory over the weight limit
+	/**
+	Method to add an item to the inventory.
+	@param item Item object
+	@return boolean specifying whether or not the item was successfully added
+	  */
 	public boolean add (Item item){
 		boolean canAdd = false;
 		int totalWeight = 0;
@@ -114,15 +129,21 @@ public class Inventory {
 		return canAdd;
 	}//end of add()
 
-	//gets the total weight of the items in the inventory
+	/**
+	Method to return current weight of inventory.
+	@return total weight of character's inventory
+	  */
 	public int totalWeight(){
 		int total = 0;
 		for(int i = 0; i <this.items.size();i++){
 			total = total + this.items.get(i).getWeight();
 		}
-		return total;
+   	return total;
 	}
-	//drops an item from the inventory object
+
+	/**
+	Method to remove an in item from inventory.
+	  */
 	public void drop(){
 		if(this.items.size()<1){
 			System.out.println("You can't drop an item if you don't have any!");
@@ -153,12 +174,17 @@ public class Inventory {
 
 	}
 
-	//removing item without drop method
+	/**
+	Method to delete item from inventory without drop method.
+	@param index Position of item in inventory
+	  */
 	public void delete(int index){
 		this.items.remove(index);
 	}
 
-	//prints out all the items in the inventory
+	/**
+	Method that prints contents of inventory.
+	  */
 	public void print(){
 		int num = 1;
 		int choose = 0;
@@ -172,7 +198,10 @@ public class Inventory {
 			return;
 		}
 	}
-	//equips a weapon from all the weapons in the inventory
+	
+	/**
+	Method that equips character with a weapon from their inventory.
+	  */
 	public void equipWeapon(){
 		ArrayList<Item> weaponList = new ArrayList<Item>();
 		if(this.items.size()<1){
@@ -203,27 +232,41 @@ public class Inventory {
 		}
 	}//end equipWeapon()	
 
-	//returns what weapon the player is using
+	/**
+	Method to return weapon that is currently equipped.
+	  */
 	public Item getEquippedWeapon(){
 		return equippedWeapon;
 
 	}
 
-	//returns what armor the player is wearing
+	/**
+	Method to return armor that is currently equipped.
+	  */
 	public Item getEquippedArmor(){
 		return equippedArmor;
 	}
 
-	//for the programmer, sets the intial weapon for the player
+	/**
+	Method to set initial weapon.
+	@param item weapon item
+	  */
 	public void setWeapon(Item item){
 		this.equippedWeapon = item;
 	}//end setWeapon
 
+
+	/**
+	Method to set intial armor.
+	@param item armor item
+	  */
 	public void setArmor(Item item){
 		this.equippedArmor = item;
 	}
 
-	//equips armor from the inventory
+	/**
+	Method to let user equip armor from inventory.
+	  */
 	public void equipArmor(){
 		ArrayList<Item> armorList = new ArrayList<Item>();
 		if(this.items.size()<1){
@@ -254,6 +297,10 @@ public class Inventory {
 
 	}
 
+	/**
+	Method for getting an item chosen by user.
+	@return item from inventory
+	  */
 	public Item getItem(){
 		this.print();
 		System.out.print("which item would you like? ");
@@ -261,10 +308,20 @@ public class Inventory {
 		return items.get(choice-1);
 	}
 
+	/**
+	Method for programmer to get item from inventory at an index.
+	@param index index of item
+	@return item at that index
+	  */
 	public Item getItem(int index){
 		return items.get(index); 
 	}
 
+	/**
+	Method that returns index of an item in inventory.
+	@param item Item object
+	@return index of object
+	  */
 	public int getIndex(Item item){
 		int index = 0;
 		for(int i = 0; i < items.size(); i++){

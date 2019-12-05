@@ -33,7 +33,7 @@ public class Main {
 				 
 				Player player2 = new Player(s);
 				player = player2;
-				newRoom = new Room(player);
+				newRoom = new Room(s, player);
 				s.close();
 			}catch (Exception f){
 				System.out.println("This file is not a valid save.");
@@ -110,6 +110,7 @@ public class Main {
 							PrintWriter p = new PrintWriter(fileName);
 							//newRoom.persist(p);
 							player.persist(p);
+							newRoom.persist(p);	
 							p.close();        					
 						}catch(Exception e){
 						System.out.println("That name is invalid");
