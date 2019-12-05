@@ -1,10 +1,20 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+This class is a subclass of Monster that makes a Dragon monster.
+@author Dungeon Crawlers
+  */
 public class Dragon extends Monster{
 
 	private ArrayList<String> names;
  
+	/**
+	Constructor for Dragon.
+	@param name String
+	@param health int
+	@param strength int
+	  */
 	public Dragon(String name, int health, int strength){
 	super(name, new Random().nextInt(45)+20, new Random().nextInt(50)+25);
 	/*names = new ArrayList<String>();
