@@ -1,10 +1,11 @@
-// This is the main method that allows a user to interact with the program. It creates a menu and then calls the methods specified by the user.
-// @author Gwen
-
 import java.util.Scanner;
 import java.io.PrintWriter;
 import java.io.FileReader;
 
+/**
+This is the main method of the game, and it calls all the methods from the rest of the program.
+@author Dungeon Crawlers
+  */
 public class Main {
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
