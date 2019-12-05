@@ -1,8 +1,9 @@
 import java.io.*;
 import java.util.Scanner;
-//A class that holds the methods to get information for the Item Class
-//it also holds the variables for Item objects
-//@author Justin
+
+/**
+@author Dungeon Crawlers
+ */
 public class Item 
 {
 
