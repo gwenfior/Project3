@@ -1,7 +1,9 @@
 import java.util.Random;
-//This class creates a monster object.
-//It holds the variables necessary for a monster to do battles.
-//@author Justin
+
+/**
+This class creates a Monster object and inherits from Character.
+@author Dungeon Crawlers
+  */
 public class Monster extends Character{
 
 	private int strength;
@@ -10,7 +12,12 @@ public class Monster extends Character{
 	private char character;
 	private int numMoves = 0;
 	
-	/**This is the Constructor for a Monster**/
+	/**
+	Constructor for Monster.
+	@param name String
+	@param health int
+	@param strength int
+	  */
 	public Monster(String name, int health, int strength){
 		super(name, health);
 		this.strength = strength;
@@ -18,21 +25,30 @@ public class Monster extends Character{
 
 	}
 	
-	//when the monster dies, it must drop an item
+	/**
+	Method that generates a random object to be dropped by monster when it's killed.
+	@return random item
+	  */
 	public Item dropItem(){
 		Item thing  = null;
 		thing = ItemGenerator.generate();
 		return thing;
 	}
 	
-	//this returns the monsters strength
+	/**
+	Method for getting Monster's strength.
+	@return int
+	  */
 	public int getStrength(){
 		return this.strength;
 	}
 
 
 
-	//this moves the monsters randomly around the room
+	/**
+	Method to make monsters move around room.
+	@return char[][] of room
+	  */
 	public char[][] moveMonster(char[][] square){//moves the monster randomly around the map
 		Random rand = new Random();
 		
