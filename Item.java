@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.Scanner;
 
 /**
+This class makes Item objects that a character can use or place in their inventory.
 @author Dungeon Crawlers
  */
 public class Item 
@@ -16,6 +17,11 @@ public class Item
 
 	/**
 	 * Constructor for objects of class Item
+	 @param itemType enum of item
+	 @param name String name of item
+	 @param weight weight of item
+	 @param value value of item
+	 @param strength strength of item
 	 */
 	public Item(ItemType itemType, String name, int weight, int value, int strength)
 	{
@@ -27,6 +33,9 @@ public class Item
 
 	}
 
+	/**
+	Default constructor for Item object.
+	  */
 	public Item(){
 		this.name = "Default Item";
 		this.weight = 0;
@@ -35,6 +44,11 @@ public class Item
 		this.type = ItemType.OTHER;
 	}
 
+	/**
+	Hydration method for items.
+	@param s Scanner object
+	@throws NoMoreItemsException if there are no more items to be read.
+	  */
 	public Item(Scanner s) throws NoMoreItemsException{
 		s.nextLine();
 
@@ -78,6 +92,10 @@ public class Item
 	public class NoMoreItemsException extends Exception{
 	}
 
+	/**
+	Persistance method for item object.
+	@param pw PrintWriter Object
+	  */
 	public void persist(PrintWriter pw){
 
 		pw.println(name);
@@ -92,29 +110,51 @@ public class Item
 		pw.println(".");	
 	}
 
-	//gets the weight of an object
+	/**
+	Method to get weight of an item.
+	@return weight of item as int
+	  */
 	public int getWeight(){
 		return this.weight;
 	}
-	//gets strength of an object
+
+	/**
+	Method to get strength of an object.
+	@return strength of item as int
+	  */
 	public int getStrength(){
 		return this.strength;
 	}
 
-	//get the value of, or what an item can be solved for
+	/**
+	Method to get value of an item.
+	@return value as an int 
+	  */
 	public int getValue(){
 		return this.value;
-	}	
-	//get the name of the object
+	}
+
+	/**
+	Method to get the name of an item.
+	@return name as String
+	  */
 	public String getName(){
 		return this.name;
 	}
-	//get the enum of the object
+
+	/**
+	Method to get enum of item type.
+	@return type of item as ItemType enum.
+	  */
 	public ItemType getType(){
 		return this.type;
 	}
 
-	//use method for generic objects that can't be used by the player
+	/**
+	Method for trying to "use" generic items.
+	@param player Player object
+	@param index integer as index of item in inventory
+	  */
 	public void use(Player player, int index){
 		if(this.name.equals("Book")){
 		String page = MessageGenerator.generate();
@@ -123,11 +163,19 @@ public class Item
 		System.out.println("You can't use that here!");
 		}
 	}
+
+	/**
+	Method for trying to get a message from a generic item.
+	@return String
+	  */
 	public String getMessage(){
 		return "no message";
 	}
 
-	//allows items to be printed 
+	/**
+	Method for printing item.
+	@return String
+	  */
 	public String toString(){
 		return ("This " + this.name + " has a value of " + this.value + ", a strength of " + this.strength + " ,and a weight of " + this.weight + ".");  
 	}	
