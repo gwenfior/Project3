@@ -132,7 +132,10 @@ public class Inventory {
 
 		return canAdd;
 	}//end of add()
-
+	
+	public void forceAdd(Item i){
+		this.items.add(i);
+	}
 	/**
 	Method to return current weight of inventory.
 	@return total weight of character's inventory

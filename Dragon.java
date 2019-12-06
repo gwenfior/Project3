@@ -8,7 +8,7 @@ import java.util.Random;
 public class Dragon extends Monster{
 
 	private ArrayList<String> names;
-	private Static int nextdragon = 0; 
+	private static int nextDragon = 0; 
 	/**
 	  Constructor for Dragon.
 	  @param name String
