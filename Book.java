@@ -34,7 +34,7 @@ public class Book extends Item{
 
 	public void persist(PrintWriter pw){
 		pw.println("Book");
-		pw.println("ItemType.OTHER");
+		pw.println("OTHER");
 		pw.print("Weight: ");
 		pw.println(weight);
 		pw.print("Value: ");
