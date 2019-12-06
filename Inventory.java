@@ -43,6 +43,10 @@ public class Inventory {
 					go = false;
 
 				}
+				else if(object.getName().equals("potion")){
+					object = new Potion(object.getType(), object.getName(), object.getWeight(), object.getValue(), object.getStrength());
+					items.add(object);
+				}
 				else{
 					items.add(object);
 				}
