@@ -13,6 +13,7 @@ public class Main {
 		Player player = new Player("default", 200);
 		Room newRoom = new Room(player);
 		boolean givenKey = false;
+		boolean usedKey = false;
 
 		System.out.println(" ");
 		System.out.println("Welcome to Dungeon Crawler!");
@@ -55,7 +56,7 @@ public class Main {
 		}
 		
 		String command  = "";
-		while(!command.equals("q")) {
+		while(!command.equals("q") && usedKey == false) {
 			try{
 				Menu.printMenu();
 			}catch(InterruptedException e){
@@ -101,6 +102,9 @@ public class Main {
 					int index = player.getInventory().getIndex(item);
 					item.use(player, index);
 					/*TODO if the item's name is magic key, then set a boolean to true to go to a new while loop for bonus level*/
+					if(item.getName().equals("Magic Key")) {
+						usedKey = true;
+					}
 					break;
 				case "q":
 					System.out.println("Would you like to save your progress? \n (s - save)	(q - quit without saving)");
@@ -133,11 +137,76 @@ public class Main {
 			if(player.getDiamonds() == 20 && givenKey == false){
 				System.out.println("You won!!");
 				givenKey = true;
-				/*TODO here, put in add magic keys*/
+				player.getInventory().add(new MagicKey(ItemType.OTHER, "Magic Key", 0, 0 ,0));
 				System.out.println("If you want to keep playing, go forth. But if you want to leave, hit q. Your progress will not be saved.");
 			}
 		}//end while
 
+		BonusLevel bonusLevel = new BonusLevel();
+		String quitAns = " ";
+
+		System.out.println("You have entered the Blind Battle Bonus Level!");
+		System.out.println("It's dark in here, you will not be able to see walls, floors, yourself, or monsters.");
+		System.out.println("There are ten dragons in the room, and if you die, you die. If you win, you win the entire game!");
+		System.out.println("All the commands are the same.");
+		System.out.println("Have fun!");
+
+		while(!dragon.getNum() == 0 && !quitAns.equals("y")) {
+			
+			try {
+				Menu.printMenu();
+			} catch(InterruptedException e){
+
+			}
+
+			System.out.println("Please enter a command:");
+                        command  = input.nextLine();
+
+			switch(command) {
+				case "w":
+					bonusLevel.moveBonus();
+					break;
+				case "s":
+					bonusLevel.moveBonus();
+					break;
+				case "a":
+					bonusLevel.moveBonus();
+					break;
+				case "d":
+					bonusLevel.moveBonus();
+					break;
+				case "p":
+					Inventory i = player.getInventory();
+					i.print();
+					break;
+				case "e":
+					player.getInventory().equipWeapon();
+					break;
+				case "r":
+					player.getInventory().equipArmor();
+					break;
+				case "f":
+					player.getInventory().drop();
+					break;
+				case "i":
+					player.stats();
+					break;
+				case "u":
+					System.out.println("Which item would you like to use?");
+
+                                        Item item = player.getInventory().getItem();
+                                        int index = player.getInventory().getIndex(item);
+                                        item.use(player, index);
+					break;
+				case "q":
+					System.out.println("If you quit now, your Bonus Level Progress will not be saved. Do you still want to quit? (y) - yes (n) - no");
+					quitAns = input.nextLine();	
+					break;
+				default: 
+					System.out.println("No match.");
+					break;
+			}
+		}
 
 
 	}//end main method	
