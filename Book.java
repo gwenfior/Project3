@@ -45,11 +45,5 @@ public class Book extends Item{
 	
 	}
 
-	public void use(Player player, int index){
-		
-	}
-
-
-
 
 }
