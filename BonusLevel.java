@@ -3,22 +3,21 @@ import java.util.Random;
 
 public class BonusLevel{
 	Player player1;
-	Dragon dragon;
 
 	public BonusLevel(Player player){
 		player1 = player;
 	}
 
-	public boolean bonusBattle(){
-		dragon = new Dragon();
+	public boolean bonusBattle(Dragon dragon){
 		dragon.setName();
 		Scanner sc = new Scanner(System.in);
 		boolean result = true;
 		String choice = "a";
 		System.out.println("You have encountered a " + dragon.getName() + "!");
 		int monsterHealth = dragon.getHealth();
-		if(pack.getEquippedArmor() != null){
-			int health  = player1.getHealth() + pack.getEquippedArmor().getStrength();
+		int health = player1.getHealth();
+		if(player1.getInventory().getEquippedArmor() != null){
+			health  = player1.getHealth() + player1.getInventory().getEquippedArmor().getStrength();
 			player1.setHealth(health);
 		}
 		while(player1.getHealth() >= 0 && monsterHealth >= 0 && !choice.equals("r")){
@@ -38,10 +37,10 @@ public class BonusLevel{
 				return result;
 			}
 			//monster attacks player	
-			health -= monster.getStrength();
+			health -= dragon.getStrength();
 			player1.setHealth(health);
 			System.out.println(dragon.getName() + " has hit " + player1.getName() + " for " + dragon.getStrength() + " damage.");
-			if(player.getHealth() <= 0){
+			if(player1.getHealth() <= 0){
 				result = false;
 				System.out.println(player1.getName() + " has been killed by the " + dragon.getName());
 				return result;
@@ -58,9 +57,9 @@ public class BonusLevel{
 		return result;
 	}//end BonusBattle
 
-	public void moveBonus(){
+	public void moveBonus(Dragon dragon){
 		Random rand = new Random();
-		randomNum = rand.nextInt(10);
+		int randomNum = rand.nextInt(10);
 		System.out.println(" ");
 		System.out.println(" ");
 		System.out.println(" ");
@@ -86,12 +85,12 @@ public class BonusLevel{
 			System.out.println(" ");
 			System.out.println(" ");
 		}
-		else if(randomNum >= 6 && randNum < 9){
+		else if(randomNum >= 6 && randomNum < 9){
 			System.out.println("You hit a wall, try to move again.");
 		}
 		else if(randomNum >= 9){
-			System.out.prinln("You ran into something scaly cold...");
-			this.BonusBattle();
+			System.out.println("You ran into something scaly cold...");
+			this.bonusBattle(dragon);
 		}
 		else{
 			System.out.println("Something loud crashed infront of you!! don't move there.");

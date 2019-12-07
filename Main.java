@@ -142,7 +142,18 @@ public class Main {
 			}
 		}//end while
 
-		BonusLevel bonusLevel = new BonusLevel();
+		BonusLevel bonusLevel = new BonusLevel(player);
+
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println(" ");
+		System.out.println(" ");
 		String quitAns = " ";
 
 		System.out.println("You have entered the Blind Battle Bonus Level!");
@@ -151,7 +162,9 @@ public class Main {
 		System.out.println("All the commands are the same.");
 		System.out.println("Have fun!");
 
-		while(!dragon.getNum() == 0 && !quitAns.equals("y")) {
+		Dragon dragon = new Dragon("blank", 0, 0);
+
+		while(dragon.getNum() != 0 && !quitAns.equals("y")) {
 			
 			try {
 				Menu.printMenu();
@@ -164,16 +177,16 @@ public class Main {
 
 			switch(command) {
 				case "w":
-					bonusLevel.moveBonus();
+					bonusLevel.moveBonus(dragon);
 					break;
 				case "s":
-					bonusLevel.moveBonus();
+					bonusLevel.moveBonus(dragon);
 					break;
 				case "a":
-					bonusLevel.moveBonus();
+					bonusLevel.moveBonus(dragon);
 					break;
 				case "d":
-					bonusLevel.moveBonus();
+					bonusLevel.moveBonus(dragon);
 					break;
 				case "p":
 					Inventory i = player.getInventory();

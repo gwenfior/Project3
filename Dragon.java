@@ -9,6 +9,7 @@ public class Dragon extends Monster{
 
 	private ArrayList<String> names;
 	private static int nextDragon = 0; 
+
 	/**
 	  Constructor for Dragon.
 	  @param name String
@@ -42,6 +43,11 @@ public class Dragon extends Monster{
 		names.remove(nextDragon);
 		nextDragon++;
 
+	}
+
+	public int getNum(){
+		int numOfDragons = names.size();
+		return numOfDragons;
 	}
 
 
