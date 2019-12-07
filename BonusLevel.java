@@ -1,3 +1,8 @@
+/**This Class creates the bonus level for our game.
+ * It holds the battles that happen in the bonus battle and the unique movement.
+ * our bonus level is a blind level, so the player cannot see what is happening.
+ * @author Dungeon Crawlers
+ */
 import java.util.Scanner;
 import java.util.Random;
 

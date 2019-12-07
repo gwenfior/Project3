@@ -164,7 +164,7 @@ public class Main {
 
 		Dragon dragon = new Dragon("blank", 0, 0);
 
-		while(dragon.getNum() != 0 && !quitAns.equals("y")) {
+		while(dragon.getNum() != 0 && !quitAns.equals("y") && player.getHealth() > 0) {
 			
 			try {
 				Menu.printMenu();
@@ -219,6 +219,18 @@ public class Main {
 					System.out.println("No match.");
 					break;
 			}
+		
+		}
+		if(dragon.getNum() == 0){
+				System.out.println("You won!! You are the king of the dungeon.");
+				System.exit(1);
+		}
+		else if(player.getHealth() == 0){
+			System.out.println("The dungeon is a scary place, try again next time!!");
+			System.exit(1);
+		}
+		else{
+			System.out.println("bye bye!");
 		}
 
 

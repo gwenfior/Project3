@@ -6,7 +6,7 @@ This class creates a Monster object and inherits from Character.
   */
 public class Monster extends Character{
 
-	private int strength;
+	protected int strength;
 	private int random1 = 12;
 	private int random2 = 12;
 	private char character;
