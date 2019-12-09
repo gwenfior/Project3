@@ -132,7 +132,11 @@ public class Inventory {
 
 		return canAdd;
 	}//end of add()
-	
+
+	/**
+	Method for adding item to inventory without player specifying action.
+	@param i Item object
+	 */	  
 	public void forceAdd(Item i){
 		this.items.add(i);
 	}
