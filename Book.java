@@ -1,14 +1,30 @@
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+/**
+This class creates a Book Item obejct that inherits from Item.
+It overrides the generic use method and returns a message from a page inside the book.
+@author Dungeon Crawlers
+  */
 public class Book extends Item{
 
-	//usable book class that will generate books that the "use" method will override	
-
+	/**
+	Constructor for Book object.
+	@param itemType enum for type of Item
+	@param name String
+	@param weight int
+	@param value int
+	@param strength int
+	  */
 	public Book(ItemType itemType, String name, int weight, int value, int strength){
 		super(ItemType.OTHER, name, weight, value, strength);
 	}
 
+	/**
+	Hydration method for Book obejcts.
+	@param s Scanner object
+	@throws NoMoreItemsException if there are no more items to be read in
+	  */
 	public Book(Scanner s)throws NoMoreItemsException{
 		this.name = "Book";
 		String category = s.nextLine();
@@ -32,6 +48,10 @@ public class Book extends Item{
 		thing = s.nextLine();	
 	}
 
+	/**
+	Peristance method for saving Book obejects.
+	@param pw PrintWriter object
+	  */
 	public void persist(PrintWriter pw){
 		pw.println("Book");
 		pw.println("OTHER");
