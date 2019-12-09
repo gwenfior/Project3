@@ -20,7 +20,7 @@ public class Main {
 		System.out.println("---------------------------");
 		System.out.println("You are a scavenger on a mission to find the rare magical Gold Diamond.");  
 		System.out.println("This diamond is hidden deep in a dungeon guarded by vicious trolls."); 
-		System.out.println("Your job is to defeat the trolls and obtain 10 pieces of the Gold Diamond to make it complete. Good luck!");
+		System.out.println("Your job is to defeat the trolls and obtain 20 pieces of the Gold Diamond to make it complete. Good luck!");
 		System.out.println("P.S. watch out for portals!! Being near them will take you to a new room.");
 		System.out.println("---------------------------");
 		System.out.println("Would you like to restore from a previously saved game? \n (yes - y) (no - n)");
