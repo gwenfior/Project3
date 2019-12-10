@@ -33,11 +33,18 @@ public class Dragon extends Monster{
 
 	}
 
+	/**
+	Method for getting the name of a Dragon object.
+	@return String of name
+	  */
 	public String getName(){
 
 		return this.name;
 	}
 
+	/**
+	Method for setting the name of a Dragon obejct
+	  */
 	public void setName(){
 
 		this.name = names.get(nextDragon);
@@ -48,6 +55,10 @@ public class Dragon extends Monster{
 
 	}
 
+	/**
+	Method for getting number of Dragons left in bonus level room.
+	@return int
+	  */
 	public int getNum(){
 		int numOfDragons = names.size();
 		return numOfDragons;

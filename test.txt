@@ -1,0 +1,72 @@
+Dungeon Crawler
+Health: 601
+Gold Diamonds: 19
+-----
+Player Inventory
+Max Weight: 200
+Steel Shield
+ARMOR
+Weight: 22
+Value: 16
+Strength: 18
+.
+Iron Shield
+ARMOR
+Weight: 47
+Value: 18
+Strength: 16
+.
+Forged Pan
+WEAPON
+Weight: 14
+Value: 49
+Strength: 28
+.
+Wood Elbow Guards
+ARMOR
+Weight: 5
+Value: 5
+Strength: 14
+.
+Iron Hammer
+WEAPON
+Weight: 29
+Value: 37
+Strength: 16
+.
+Forged Shield
+ARMOR
+Weight: 26
+Value: 13
+Strength: 42
+.
+Iron Breastplate
+ARMOR
+Weight: 29
+Value: 18
+Strength: 34
+.
+Forged Dagger
+WEAPON
+Weight: 28
+Value: 25
+Strength: 19
+.
+-End-
+.
+Forged Pan
+WEAPON
+Weight: 14
+Value: 49
+Strength: 28
+.
+Forged Shield
+ARMOR
+Weight: 26
+Value: 13
+Strength: 42
+.
+.
+CurrentRoom: 3
+currentX: 2
+currentY: 7

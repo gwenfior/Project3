@@ -132,7 +132,11 @@ public class Inventory {
 
 		return canAdd;
 	}//end of add()
-	
+
+	/**
+	Method for adding item to inventory without player specifying action.
+	@param i Item object
+	 */	  
 	public void forceAdd(Item i){
 		this.items.add(i);
 	}
@@ -241,6 +245,7 @@ public class Inventory {
 
 	/**
 	Method to return weapon that is currently equipped.
+	@return Item the equipped weapon
 	  */
 	public Item getEquippedWeapon(){
 		return equippedWeapon;
@@ -249,6 +254,7 @@ public class Inventory {
 
 	/**
 	Method to return armor that is currently equipped.
+	@return Item the equipped armor
 	  */
 	public Item getEquippedArmor(){
 		return equippedArmor;

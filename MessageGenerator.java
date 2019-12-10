@@ -7,6 +7,10 @@ This class generates a message for a book to have when used from one static meth
 public class MessageGenerator {
 
 
+	/**
+	Method for generating a message from a Book object.
+	@return String
+	  */
 	public static String generate(){
 
 		Random rng = new Random();

@@ -48,6 +48,7 @@ public class Monster extends Character{
 	/**
 	Method to make monsters move around room.
 	@return char[][] of room
+	@param square char[][]
 	  */
 	public char[][] moveMonster(char[][] square){//moves the monster randomly around the map
 		Random rand = new Random();

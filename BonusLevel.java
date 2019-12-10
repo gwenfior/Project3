@@ -1,18 +1,28 @@
+import java.util.Scanner;
+import java.util.Random;
+
 /**This Class creates the bonus level for our game.
  * It holds the battles that happen in the bonus battle and the unique movement.
  * our bonus level is a blind level, so the player cannot see what is happening.
  * @author Dungeon Crawlers
  */
-import java.util.Scanner;
-import java.util.Random;
 
 public class BonusLevel{
 	Player player1;
-
+	
+	/**
+	Constructor for the Bonus Level.
+	@param player Player object
+	  */
 	public BonusLevel(Player player){
 		player1 = player;
 	}
 
+	/**
+	Method for battles inside of the bonus level.
+	@param dragon Dragon object
+	@return boolean
+	  */
 	public boolean bonusBattle(Dragon dragon){
 		dragon.setName();
 		Scanner sc = new Scanner(System.in);
@@ -62,6 +72,10 @@ public class BonusLevel{
 		return result;
 	}//end BonusBattle
 
+	/**
+	Move Player methof for bonus level.
+	@param dragon Dragon obejct
+	  */
 	public void moveBonus(Dragon dragon){
 		Random rand = new Random();
 		int randomNum = rand.nextInt(10);
@@ -104,4 +118,4 @@ public class BonusLevel{
 
 
 
-}//end bonusBattle
+}//end bonusLevel
