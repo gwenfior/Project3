@@ -245,6 +245,7 @@ public class Inventory {
 
 	/**
 	Method to return weapon that is currently equipped.
+	@return Item the equipped weapon
 	  */
 	public Item getEquippedWeapon(){
 		return equippedWeapon;
@@ -253,6 +254,7 @@ public class Inventory {
 
 	/**
 	Method to return armor that is currently equipped.
+	@return Item the equipped armor
 	  */
 	public Item getEquippedArmor(){
 		return equippedArmor;

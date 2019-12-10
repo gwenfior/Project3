@@ -11,6 +11,7 @@ public class ItemGenerator{
 	
         /**
 	This method generates a random item and is static.
+	@return the item that was generated
 	*/	  
 	public static Item generate(){
 
