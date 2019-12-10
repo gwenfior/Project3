@@ -101,7 +101,7 @@ public class Main {
 					Item item = player.getInventory().getItem();
 					int index = player.getInventory().getIndex(item);
 					item.use(player, index);
-					/*TODO if the item's name is magic key, then set a boolean to true to go to a new while loop for bonus level*/
+					// if the item's name is magic key, then set a boolean to true to go to a new while loop for bonus level
 					if(item.getName().equals("Magic Key")) {
 						usedKey = true;
 					}
@@ -114,8 +114,7 @@ public class Main {
 						System.out.println("Enter the name of the file you want to save to: ");
 						String fileName = input.nextLine();
 						try{	
-							PrintWriter p = new PrintWriter(fileName);
-							//newRoom.persist(p);
+							PrintWriter p = new PrintWriter(fileName);	
 							player.persist(p);
 							newRoom.persist(p);	
 							p.close();        					
